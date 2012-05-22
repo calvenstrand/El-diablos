@@ -2,21 +2,29 @@
 
 class Db{
 var $mysqli;
+public function connector(){
+		$mysqli = new mysqli("localhost", "root", "", "diablofy");
+		if ($mysqli->connect_errno) {
+    	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+}
+
+
 	public function select1(){
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }else{
-	$value2 = 1;
+	$value2 = 30;
 	$name = "Erics Life";
 	$length = "02:30";
-	echo "The connection worked perfectly";
+	echo "The connection worked perfectly<br />";
 
 		$stmt = $mysqli->prepare(
 		  "SELECT songs.id,songs.name,songs.length,artists.name FROM songs
 		  LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 		  RIGHT JOIN artists ON (artists_songs.artistid=artists.id)
-		  WHERE artists_songs.songid = ?");
+		  WHERE artists_songs.songid <= ?");
 		$stmt->bind_param( "i", $value2); 
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
@@ -34,12 +42,13 @@ echo 'name: '.$col2.'
 echo 'length: '.$col3.'
 ';
 echo 'artist: '.$col4.'
-';
+<br />';
+
 }
 
 	
 
-$mysqli->close();
+
 		
 }
 
@@ -51,19 +60,15 @@ $mysqli->close();
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }else{
-	$value2 = 1;
+	$value2 = '2';
 	$name = "Erics Life";
 	$length = "02:30";
 	echo "The connection worked perfectly";
 
 		$stmt = $mysqli->prepare(
 		  "
-		  START TRANSACTION;
-		  INSERT INTO songs ('name', 'id') VALUES ();
-		  INSERT INTO artists_songs ('1')
-		
-
-		COMMIT;
+		  
+		  INSERT INTO songs ('name', 'id') VALUES ()
 		   ");
 		$stmt->bind_param( "i", $value2); 
 		// "ss' is a format string, each "s" means string
@@ -85,7 +90,7 @@ echo 'length: '.$col3.'
 
 	
 
-$mysqli->close();
+
 		
 }
 

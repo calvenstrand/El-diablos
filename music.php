@@ -16,17 +16,38 @@
         ?>
     
         <div class="main" role="main">
-            <div class="slider-wrapper theme-default">
-            	<div class="ribbon"></div>
-                    <div id="slider" class="nivoSlider">
-                        <img src="img/bild1.jpg" />
-                        <img src="img/bild2.jpg" />
-                    </div>
-            </div>
-        
-        	<div class="main-child">
-            
-            </div>
+			<table id="table">
+                <thead>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Time</th>
+                    <th>Year</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Smith</td>
+                        <td>johnsmith@example.com</td>
+                        <td>http://www.example.com</td>
+                        <td>http://www.example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Peter</td>
+                        <td>James</td>
+                        <td>peterjames@example.com</td>
+                        <td>http://www.example.com</td>
+                        <td>http://www.example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Ronald</td>
+                        <td>Weeley</td>
+                        <td>ronweeley@example.com</td>
+                        <td>http://www.example.com</td>
+                        <td>http://www.example.com</td>
+                    </tr>
+                </tbody>
+            </table>
         
         </div>
     
