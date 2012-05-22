@@ -1,8 +1,10 @@
 <?php
 
 include('includes/dbClass.php');
+include('includes/classes/playlist.php');
 $db = new Db();
-//$db->select1();
-$db->insert1();
+$pList = new Playlist();
+//$db->connector();
+$pList->showPlaylist();
 
 ?>
