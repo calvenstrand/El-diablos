@@ -5,6 +5,11 @@ include('includes/classes/playlist.php');
 $db = new Db();
 $pList = new Playlist();
 //$db->connector();
-$pList->showPlaylist();
+//$pList->createPlaylist();
+
+
+//$pList->sendSongToPlaylist();
+//$pList->showPlaylist();
+$pList->showAllSongs();
 
 ?>

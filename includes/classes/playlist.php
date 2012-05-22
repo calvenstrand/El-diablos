@@ -57,8 +57,8 @@ public function sendSongToPlaylist(){
 	
 
 	// "ss' is a format string, each "s" means string
-	$playlistid = 4;
-	$songid = 3;
+	$playlistid = 0;
+	$songid = 24;
 	$stmt->execute();
 	
 
@@ -81,38 +81,101 @@ public function showPlaylist(){
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }else{
-	$value2 = 4;
+	$value2 = 1;
 	$name = "Erics Life";
 	$length = "02:30";
 	echo "The connection worked perfectly<br />";
 
 		$stmt = $mysqli->prepare(
-		  "SELECT playlists.name, artists.name, songs.name, songs.length FROM songs
+		  "SELECT playlists.name, artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
 		  LEFT JOIN playlists_songs ON (playlists_songs.songid=songs.id)
 		  LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 		  LEFT JOIN artists ON (artists_songs.artistid=artists.id)
-			LEFT JOIN playlists ON (playlists.id=?)
-			WHERE playlists_songs.playlistid = 4
+			LEFT JOIN playlists ON (playlists.id= ?)
+			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			WHERE playlists_songs.playlistid = ?
 
 		  ");
-		$stmt->bind_param( "i", $value2); 
+		$stmt->bind_param( "ii", $value2, $value2); 
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
 
-		$stmt->bind_result($col1, $col2, $col3, $col4);
+		$stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $songid);
 		// then fetch and close the statement
 
 		while ($row = $stmt->fetch()) {
 
 
-echo 'playlistName: '.$col1.'
-';
-echo 'artist: '.$col2.'
-';
-echo 'songname: '.$col3.'
-';
-echo 'length: '.$col4.'
-<br />';
+echo '<table><tr><td>'
+.$col1
+.'</td><td>'
+.$col2
+.'</td><td>'
+.$col3
+.'</td><td>'
+.$col4
+.'</td><td>'
+.$col5
+.'</td><td>'
+.$col6
+.'</td>'
+.'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$value2.'">Delete track from Playlist</a></td>'
+.'</tr></table>';
+
+
+
+}
+
+}
+
+}
+
+
+
+public function showAllSongs(){
+		$mysqli = new mysqli("localhost", "root", "", "diablofy");
+		if ($mysqli->connect_errno) {
+    	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}else{
+	$value2 = 1;
+	$name = "Erics Life";
+	$length = "02:30";
+	echo "The connection worked perfectly<br />";
+
+		$stmt = $mysqli->prepare(
+		  "SELECT artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
+		  LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+		  LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			");
+		 
+		// "ss' is a format string, each "s" means string
+		$stmt->execute();
+
+		$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
+		// then fetch and close the statement
+
+		while ($row = $stmt->fetch()) {
+
+
+echo '<table><tr><td>'
+.$artistname
+.'</td><td>'
+.$songname
+.'</td><td>'
+.$songlength
+.'</td><td>'
+.$albumname
+.'</td><td>'
+.$albumyear
+.'</td><td>'
+.$songid
+.'</td>'
+.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add track to Playlist</a></td>'
+.'</tr></table>';
+
 
 }
 
