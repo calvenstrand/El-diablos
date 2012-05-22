@@ -63,8 +63,32 @@ textarea { overflow: auto; vertical-align: top; resize: vertical; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
-table { border-collapse: collapse; border-spacing: 0; }
+table { border-collapse: collapse; border-spacing: 0;}
 td { vertical-align: top; }
+
+#table thead {
+	width: 100%;
+	border-bottom: 1px solid #666;
+}
+
+#table thead th {
+	padding: 5px 10px 5px 10px;
+	text-align: left;
+}
+
+#table td {
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+tbody tr:hover {
+	background: #ebebeb;	
+}
+
+tbody tr td:hover {
+	background: #dedede;	
+}
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
@@ -194,7 +218,8 @@ header {
 }
 
 .login-bar #login-trigger,
-.login-bar #signup a {
+.login-bar #signup a,
+.login-bar #myplaylists a {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
@@ -331,7 +356,6 @@ header {
 	top: 2px;
 	right: 2px;
 }
-
 
 
 /* =============================================================================
