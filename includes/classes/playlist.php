@@ -141,7 +141,7 @@ public function showAllSongs(){
 	$value2 = 1;
 	$name = "Erics Life";
 	$length = "02:30";
-	echo "The connection worked perfectly<br />";
+	
 
 		$stmt = $mysqli->prepare(
 		  "SELECT artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
