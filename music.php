@@ -6,6 +6,8 @@
 <head>
 	<?php
 		include_once ('includes/head.php');
+        include('includes/classes/playlist.php');
+        $pList = new Playlist();
 	?>
 </head>
 <body>
@@ -21,31 +23,14 @@
                     <th>Song</th>
                     <th>Artist</th>
                     <th>Album</th>
-                    <th>Time</th>
+                    <th>Length</th>
                     <th>Year</th>
+                    <th>Add</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Smith</td>
-                        <td>johnsmith@example.com</td>
-                        <td>http://www.example.com</td>
-                        <td>http://www.example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Peter</td>
-                        <td>James</td>
-                        <td>peterjames@example.com</td>
-                        <td>http://www.example.com</td>
-                        <td>http://www.example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Ronald</td>
-                        <td>Weeley</td>
-                        <td>ronweeley@example.com</td>
-                        <td>http://www.example.com</td>
-                        <td>http://www.example.com</td>
-                    </tr>
+                    <?php
+                    $pList->showAllSongs();
+                    ?>
                 </tbody>
             </table>
         

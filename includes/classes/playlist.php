@@ -84,7 +84,7 @@ public function showPlaylist(){
 	$value2 = 1;
 	$name = "Erics Life";
 	$length = "02:30";
-	echo "The connection worked perfectly<br />";
+	
 
 		$stmt = $mysqli->prepare(
 		  "SELECT playlists.name, artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
@@ -160,21 +160,19 @@ public function showAllSongs(){
 		while ($row = $stmt->fetch()) {
 
 
-echo '<table><tr><td>'
-.$artistname
-.'</td><td>'
+echo '<tr><td>'
 .$songname
 .'</td><td>'
-.$songlength
+.$artistname
 .'</td><td>'
 .$albumname
 .'</td><td>'
-.$albumyear
+.$songlength
 .'</td><td>'
-.$songid
+.$albumyear
 .'</td>'
-.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add track to Playlist</a></td>'
-.'</tr></table>';
+.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a></td>'
+.'</tr>';
 
 
 }
