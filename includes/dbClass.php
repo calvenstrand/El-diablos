@@ -13,12 +13,15 @@ var $mysqli;
 	echo "The connection worked perfectly";
 
 		$stmt = $mysqli->prepare(
-		  "SELECT * FROM songs WHERE id = ?");
+		  "SELECT songs.id,songs.name,songs.length,artists.name FROM songs
+		  LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+		  RIGHT JOIN artists ON (artists_songs.artistid=artists.id)
+		  WHERE artists_songs.songid = ?");
 		$stmt->bind_param( "i", $value2); 
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
 
-		$stmt->bind_result($col1, $col2, $col3);
+		$stmt->bind_result($col1, $col2, $col3, $col4);
 		// then fetch and close the statement
 
 		while ($row = $stmt->fetch()) {
@@ -29,6 +32,8 @@ echo 'songId: '.$col1.'
 echo 'name: '.$col2.'
 ';
 echo 'length: '.$col3.'
+';
+echo 'artist: '.$col4.'
 ';
 }
 
@@ -52,7 +57,14 @@ $mysqli->close();
 	echo "The connection worked perfectly";
 
 		$stmt = $mysqli->prepare(
-		  "INSERT INTO songs WHERE id = ?");
+		  "
+		  START TRANSACTION;
+		  INSERT INTO songs ('name', 'id') VALUES ();
+		  INSERT INTO artists_songs ('1')
+		
+
+		COMMIT;
+		   ");
 		$stmt->bind_param( "i", $value2); 
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
