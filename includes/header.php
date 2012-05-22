@@ -1,15 +1,18 @@
 <header>
 	<div class="login-bar" />
     	<ul>
+				<?php
+				if (!isset($_SESSION['username'])) {
+				?>
             <li id="login">
                 <a id="login-trigger" href="#">
-                	Log in <span>▼</span>
+                	Log in<span>▼</span>
                 </a>
                 <div id="login-content">
-                    <form>
+                    <form action="includes/login/login.php" method="post">
                         <fieldset id="inputs">
                             <input id="username" type="username" name="username" placeholder="Your Username" required>
-                            <input id="password" type="password" name="Password" placeholder="Password" required>
+                            <input id="password" type="password" name="password" placeholder="Password" required>
                         </fieldset>
                         <fieldset id="actions">
                             <input type="submit" id="submit" value="Log in">
@@ -20,6 +23,18 @@
             <li id="signup">
                     <a href="">Register</a>
             </li>
+						<?php
+						} else {
+						?>
+						<li id="myplaylists">
+							<a href="">My playlists</a>
+						</li>
+						<li id="myplaylists">
+							<a href="includes/login/logout.php">Log out</a>
+						</li>
+						<?php
+						}
+						?>
         </ul>
     </div>
     
