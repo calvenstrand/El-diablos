@@ -3,7 +3,7 @@
     	<ul>
             <li id="login">
                 <a id="login-trigger" href="#">
-                        Log in <span>▼</span>
+                	Log in <span>▼</span>
                 </a>
                 <div id="login-content">
                     <form>
@@ -25,11 +25,11 @@
     
     <nav>
         <ul id="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Work</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="music.php">Music</a></li>
+            <li><a href="toplists.php">Top Lists</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
     </nav>
     
