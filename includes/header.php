@@ -27,9 +27,9 @@
 						} else {
 						?>
 						<li id="myplaylists">
-							<a href="">My playlists</a>
+							<a href="myplaylists.php">My playlists</a>
 						</li>
-						<li id="myplaylists">
+						<li id="signup">
 							<a href="includes/login/logout.php">Log out</a>
 						</li>
 						<?php

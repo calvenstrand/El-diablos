@@ -213,7 +213,7 @@ header {
 	padding:2px 10px 0px 10px;
 }
 
-.login-bar #login {
+.login-bar #login, #myplaylists {
 	border-right: 1px solid #ddd;
 }
 
