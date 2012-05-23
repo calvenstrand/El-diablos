@@ -75,6 +75,22 @@ $mysqli->close();
 
 
 
+public function myPlaylists(){
+$userid = $_SESSION['userid'];
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "SELECT playlists.name FROM playlists
+		  LEFT JOIN users_playlists ON (users_playlists.playlistid=playlists.id)
+		  WHERE users_playlists.userid=?
+		  ");
+		$stmt->bind_param( "i", $userid); 
+		$stmt->execute();
+		$stmt->bind_result($playlistName);
+		while($row1 = $stmt->fetch()) {
+			echo '<option>'.$playlistName.'</option>';
+		}
+
+}
 
 public function showPlaylist(){
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");

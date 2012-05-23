@@ -17,16 +17,18 @@ if ($mysqli->connect_errno) {
 	$username = cleaner($_POST['username']);
 	$password = cleaner($_POST['password']);
 	$stmt = $mysqli->prepare('
-		SELECT username, password FROM users
+		SELECT username, password, id FROM users
 		WHERE username = ? AND password = ?
 	');
 	$stmt->bind_param('ss', $username, $password);
 	echo 'username: ' . $username . '<br/>';
 	echo 'password: ' . $password . '<br/>';
 	if ($stmt->execute()) {
+		$stmt->bind_result($col1, $col2, $col3);
 		if ($stmt->fetch() == 1) {
 			session_start();
 			$_SESSION['username'] = $username;
+			$_SESSION['userid'] = $col3;
 			header('Location: ../../index.php');
 			exit;
 		} else {
