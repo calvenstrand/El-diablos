@@ -21,7 +21,7 @@
                 </div>
             </li>
             <li id="signup">
-                    <a href="">Register</a>
+                    <a href="register.php">Register</a>
             </li>
 						<?php
 						} else {
