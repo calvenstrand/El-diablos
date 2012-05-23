@@ -123,21 +123,19 @@ public function showPlaylist(){
 		while ($row = $stmt->fetch()) {
 
 
-echo '<table><tr><td>'
-.$col1
+echo '<tr><td>'
+.$col3
 .'</td><td>'
 .$col2
 .'</td><td>'
-.$col3
+.$col5
 .'</td><td>'
 .$col4
-.'</td><td>'
-.$col5
 .'</td><td>'
 .$col6
 .'</td>'
 .'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$value2.'">Delete track from Playlist</a></td>'
-.'</tr></table>';
+.'</tr>';
 
 
 

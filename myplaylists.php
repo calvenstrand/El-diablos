@@ -48,11 +48,11 @@ session_start();
                     <th><a href="?sortMode=album">Album</a></th>
                     <th><a href="?sortMode=length">Length</a></th>
                     <th><a href="?sortMode=year">Year</a></th>
-                    <th>Add</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                     <?php
-                    //$pList->showAllSongs($sortMode);
+                    $pList->showPlaylist();
                     ?>
                 </tbody>
             </table>  
