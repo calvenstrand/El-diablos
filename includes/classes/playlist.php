@@ -167,6 +167,7 @@ public function showAllSongs($sortMode){
 	
 	
 		if(isset($_GET['album'])){
+			$_SESSION['selected'] = 'album='.$_GET['album'];
 		$stmt = $mysqli->prepare(
 			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
@@ -179,6 +180,7 @@ public function showAllSongs($sortMode){
 		 $stmt->bind_param( "s", $_GET['album']); 
 		// "ss' is a format string, each "s" means string
 		}else if(isset($_GET['artist'])){
+			$_SESSION['selected'] = 'artist='.$_GET['artist'];
 			$stmt = $mysqli->prepare(
 			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
@@ -195,6 +197,7 @@ public function showAllSongs($sortMode){
 
 
 		else{
+			$_SESSION['selected'] = '';
 			$stmt = $mysqli->prepare(
 			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
