@@ -133,24 +133,49 @@ echo '<table><tr><td>'
 
 
 
-public function showAllSongs(){
+public function showAllSongs($sortMode){
+	if(isset($_SESSION['lastWay'])){
+
+	$way = $_SESSION['lastWay'];
+
+	}else{
+
+		$way = 'ASC';
+	}
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }else{
-	$value2 = 1;
-	$name = "Erics Life";
-	$length = "02:30";
-	
 
+	if(isset($_SESSION['lastSort'])){
+
+		if($_SESSION['lastSort'] == $sortMode){
+
+			
+			if($way == 'ASC'){
+			
+				$way = 'DESC';
+				
+			}else{
+				$way = 'ASC';
+			}
+			$_SESSION['lastWay'] = $way;
+
+		}
+
+	}
+	
+	
+		
 		$stmt = $mysqli->prepare(
-		  "SELECT artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
-		  LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
-		  LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+			"SELECT artists.name as artist, songs.name as song, songs.length as length,albums.name as album, albums.year as year, songs.id FROM songs
+			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			ORDER BY $sortMode $way
 			");
-		 
+		  
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
 
@@ -160,24 +185,24 @@ public function showAllSongs(){
 		while ($row = $stmt->fetch()) {
 
 
-echo '<tr><td>'
-.$songname
-.'</td><td>'
-.$artistname
-.'</td><td>'
-.$albumname
-.'</td><td>'
-.$songlength
-.'</td><td>'
-.$albumyear
-.'</td>'
-.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a></td>'
-.'</tr>';
+	echo '<tr><td>'
+	.$songname
+	.'</td><td>'
+	.$artistname
+	.'</td><td>'
+	.$albumname
+	.'</td><td>'
+	.$songlength
+	.'</td><td>'
+	.$albumyear
+	.'</td>'
+	.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a></td>'
+	.'</tr>';
 
 
-}
-
-}
+	}
+	$_SESSION['lastSort'] = $sortMode;
+	}
 
 }
 

@@ -5,9 +5,17 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<?php
+    session_start();
 		include_once ('includes/head.php');
         include('includes/classes/playlist.php');
         $pList = new Playlist();
+        if(isset($_GET['sortMode'])){
+            $sortMode = $_GET['sortMode'];
+        }else{
+            $sortMode = 'artist';
+
+        }
+
 	?>
 </head>
 <body>
@@ -20,16 +28,16 @@
         <div class="main" role="main">
 			<table id="table">
                 <thead>
-                    <th>Song</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th>Length</th>
-                    <th>Year</th>
+                    <th><a href="?sortMode=song">Song</a></th>
+                    <th><a href="?sortMode=artist">Artist</a></th>
+                    <th><a href="?sortMode=album">Album</a></th>
+                    <th><a href="?sortMode=length">Length</a></th>
+                    <th><a href="?sortMode=year">Year</a></th>
                     <th>Add</th>
                 </thead>
                 <tbody>
                     <?php
-                    $pList->showAllSongs();
+                    $pList->showAllSongs($sortMode);
                     ?>
                 </tbody>
             </table>
