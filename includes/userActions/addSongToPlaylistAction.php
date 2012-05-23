@@ -28,6 +28,6 @@ $songid = $_GET['songid'];
 	
 
 $mysqli->close();
-header("Location: ../../rasmus.php")
+header("Location: ../../music.php")
 
 		?>
