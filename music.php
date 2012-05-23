@@ -12,8 +12,21 @@
         if(isset($_GET['sortMode'])){
             $sortMode = $_GET['sortMode'];
         }else{
+            $_SESSION['selected'] = '';
             $sortMode = 'artist';
 
+        }
+
+        if(isset($_GET['album'])){
+            $_SESSION['selected'] = 'album='.$_GET['album'];}
+            if(isset($_GET['artist'])){
+            $_SESSION['selected'] = 'artist='.$_GET['artist'];}
+
+
+        if(isset($_SESSION['selected'])){
+            $argument = '&'.$_SESSION['selected'];
+        }else{
+            $argument = '';
         }
 
 	?>
@@ -23,16 +36,21 @@
 	<div id="container">
 		<?php
             include_once ('includes/header.php');
+           
+
         ?>
     
         <div class="main" role="main">
 			<table id="table">
                 <thead>
-                    <th><a href="?sortMode=song">Song</a></th>
-                    <th><a href="?sortMode=artist">Artist</a></th>
-                    <th><a href="?sortMode=album">Album</a></th>
-                    <th><a href="?sortMode=length">Length</a></th>
-                    <th><a href="?sortMode=year">Year</a></th>
+                    <?php  
+                    
+                     echo'<th><a href="?sortMode=song'.$argument.'">Song</a></th>
+                        <th><a href="?sortMode=artist'.$argument.'">Artist</a></th>
+                        <th><a href="?sortMode=album'.$argument.'">Album</a></th>
+                        <th><a href="?sortMode=length'.$argument.'">Length</a></th>
+                        <th><a href="?sortMode=year'.$argument.'">Year</a></th>
+                    ';?>
                     <th>Add</th>
                 </thead>
                 <tbody>
