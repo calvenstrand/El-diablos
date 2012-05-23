@@ -42,15 +42,33 @@ session_start();
         <div class="main" role="main">
         	<h2 style="text-align:center">My Playlists</h2>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <select name="select">
-                <option>-- Välj Spellista --</option>
+
+                <div class="size">
+            <input type="text" name="test" value="choose your size" class="field" readonly="readonly" />
+         <ul class="list">
+         <li>Male - M</li>
+         <li>Female - M</li>
+         <li>Male - S</li>
+        <li>Female - S</li>
+        <?php $pList->myPlaylists(); ?>
+            </ul>
+            </div>
+
+
+            
                 <?php
                     
-                    $pList->myPlaylists();
+
+
                     
-                
-                ?>
-        	</select>
+
+                   /* <select name="select">
+                <option>-- Välj Spellista --</option>  
+        	</select>*/
+
+
+
+            ?>
             <input type="submit" value="Change pList" name="send">
             </form>
           	<table id="table">

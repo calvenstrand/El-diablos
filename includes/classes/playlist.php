@@ -87,7 +87,7 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 		$stmt->execute();
 		$stmt->bind_result($playlistName, $plistId);
 		while($row1 = $stmt->fetch()) {
-			echo '<option value="'.$plistId.'" name="plistID">'.$playlistName.'</option>';
+			echo '<li value="'.$plistId.'" name="plistID">'.$playlistName.'</li>';
 		}
 
 }
