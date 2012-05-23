@@ -19,7 +19,21 @@ session_start();
         ?>
     
         <div class="main" role="main">
-            
+          	<table id="table">
+                <thead>
+                    <th><a href="?sortMode=song">Song</a></th>
+                    <th><a href="?sortMode=artist">Artist</a></th>
+                    <th><a href="?sortMode=album">Album</a></th>
+                    <th><a href="?sortMode=length">Length</a></th>
+                    <th><a href="?sortMode=year">Year</a></th>
+                    <th>Add</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $pList->showAllSongs($sortMode);
+                    ?>
+                </tbody>
+            </table>  
         
         </div>
     
