@@ -75,6 +75,22 @@ $mysqli->close();
 
 
 
+public function myPlaylists(){
+$userid = $_SESSION['userid'];
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "SELECT playlists.name FROM playlists
+		  LEFT JOIN users_playlists ON (users_playlists.playlistid=playlists.id)
+		  WHERE users_playlists.userid=?
+		  ");
+		$stmt->bind_param( "i", $userid); 
+		$stmt->execute();
+		$stmt->bind_result($playlistName);
+		while($row1 = $stmt->fetch()) {
+			echo '<option>'.$playlistName.'</option>';
+		}
+
+}
 
 public function showPlaylist(){
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -107,21 +123,19 @@ public function showPlaylist(){
 		while ($row = $stmt->fetch()) {
 
 
-echo '<table><tr><td>'
-.$col1
+echo '<tr><td>'
+.$col3
 .'</td><td>'
 .$col2
 .'</td><td>'
-.$col3
+.$col5
 .'</td><td>'
 .$col4
-.'</td><td>'
-.$col5
 .'</td><td>'
 .$col6
 .'</td>'
 .'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$value2.'">Delete track from Playlist</a></td>'
-.'</tr></table>';
+.'</tr>';
 
 
 

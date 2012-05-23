@@ -29,6 +29,6 @@ $playlistid = $_GET['playlistid'];
 	
 
 $mysqli->close();
-header("Location: ../../seePlaylist.php")
+header("Location: ../../myPlaylists.php")
 
 		?>

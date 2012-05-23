@@ -25,6 +25,7 @@ session_start();
 	<div id="container">
 		<?php
             include_once ('includes/header.php');
+            
         ?>
     
         <div class="main" role="main">
@@ -33,10 +34,9 @@ session_start();
             <select>
                 <option>-- Välj Spellista --</option>
                 <?php
-                global $diablofy;
-                $pList = $diablofy->get_results( "SELECT name FROM $diablofy->platlists" );
-                
-                    echo "<option value='$playlistid'>$playlistname</option>";
+               
+                    $pList->myPlaylists();
+                    
                 
                 ?>
         	</select>
@@ -48,11 +48,11 @@ session_start();
                     <th><a href="?sortMode=album">Album</a></th>
                     <th><a href="?sortMode=length">Length</a></th>
                     <th><a href="?sortMode=year">Year</a></th>
-                    <th>Add</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                     <?php
-                    $pList->showAllSongs($sortMode);
+                    $pList->showPlaylist();
                     ?>
                 </tbody>
             </table>  
