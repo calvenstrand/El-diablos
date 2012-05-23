@@ -79,20 +79,20 @@ public function myPlaylists(){
 $userid = $_SESSION['userid'];
 $mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare(
-		  "SELECT playlists.name FROM playlists
+		  "SELECT playlists.name, playlists.id FROM playlists
 		  LEFT JOIN users_playlists ON (users_playlists.playlistid=playlists.id)
 		  WHERE users_playlists.userid=?
 		  ");
 		$stmt->bind_param( "i", $userid); 
 		$stmt->execute();
-		$stmt->bind_result($playlistName);
+		$stmt->bind_result($playlistName, $plistId);
 		while($row1 = $stmt->fetch()) {
-			echo '<option>'.$playlistName.'</option>';
+			echo '<option value="'.$plistId.'" name="plistID">'.$playlistName.'</option>';
 		}
 
 }
 
-public function showPlaylist(){
+public function showPlaylist($playlistId){
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -113,7 +113,7 @@ public function showPlaylist(){
 			WHERE playlists_songs.playlistid = ?
 
 		  ");
-		$stmt->bind_param( "ii", $value2, $value2); 
+		$stmt->bind_param( "ii", $playlistId, $playlistId); 
 		// "ss' is a format string, each "s" means string
 		$stmt->execute();
 

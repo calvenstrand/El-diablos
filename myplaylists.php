@@ -17,6 +17,16 @@ session_start();
             $sortMode = 'artist';
 
         }
+        if(isset($_POST['select'])){
+            $_GET['plist'] = $_POST['select'];
+
+        }
+        if(isset($_GET['plist'])){
+            $plistChosen = 1;
+            $playlistId = $_GET['plist'];
+        }else{
+            $plistChosen = 0;
+        }
 
 	?>
 </head>
@@ -24,23 +34,25 @@ session_start();
 
 	<div id="container">
 		<?php
+        
             include_once ('includes/header.php');
             
         ?>
     
         <div class="main" role="main">
         	<h2 style="text-align:center">My Playlists</h2>
-            
-            <select>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <select name="select">
                 <option>-- Välj Spellista --</option>
                 <?php
-               
+                    
                     $pList->myPlaylists();
                     
                 
                 ?>
         	</select>
-            
+            <input type="submit" value="Change pList" name="send">
+            </form>
           	<table id="table">
                 <thead>
                     <th><a href="?sort'Mode=song">Song</a></th>
@@ -52,7 +64,9 @@ session_start();
                 </thead>
                 <tbody>
                     <?php
-                    $pList->showPlaylist();
+                    if($plistChosen == 1){
+                    $pList->showPlaylist($playlistId);
+                    }
                     ?>
                 </tbody>
             </table>  
