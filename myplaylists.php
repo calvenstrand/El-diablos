@@ -9,6 +9,15 @@ session_start();
 <head>
 	<?php
 		include_once ('includes/head.php');
+        include('includes/classes/playlist.php');
+        $pList = new Playlist();
+        if(isset($_GET['sortMode'])){
+            $sortMode = $_GET['sortMode'];
+        }else{
+            $sortMode = 'artist';
+
+        }
+
 	?>
 </head>
 <body>
@@ -19,9 +28,22 @@ session_start();
         ?>
     
         <div class="main" role="main">
+        	<h2 style="text-align:center">My Playlists</h2>
+            
+            <select>
+                <option>-- Välj Spellista --</option>
+                <?php
+                global $diablofy;
+                $pList = $diablofy->get_results( "SELECT name FROM $diablofy->platlists" );
+                
+                    echo "<option value='$playlistid'>$playlistname</option>";
+                
+                ?>
+        	</select>
+            
           	<table id="table">
                 <thead>
-                    <th><a href="?sortMode=song">Song</a></th>
+                    <th><a href="?sort'Mode=song">Song</a></th>
                     <th><a href="?sortMode=artist">Artist</a></th>
                     <th><a href="?sortMode=album">Album</a></th>
                     <th><a href="?sortMode=length">Length</a></th>
