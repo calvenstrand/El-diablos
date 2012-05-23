@@ -21,10 +21,10 @@ session_start();
 			<div class="contact">
 				<form name="registerform" method="post" action="includes/userActions/register.php">
 					<div class="cont">
-						<?php if ($_GET['error'] == 1) { ?>
-						<label for="name">Username - <span style="color:#FF0000">Already taken</span></label>
+						<?php if (!$_GET['error'] == 1) { ?>
+						<label for="name">Username</label>					
 						<?php } else { ?>
-						<label for="name">Username</label>
+						<label for="name">Username - <span style="color:#FF0000">Already taken</span></label>
 						<?php } ?>
 						<input type="text" name="username" id="name" required="required" />
 					</div>
