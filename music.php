@@ -41,6 +41,17 @@
         ?>
     
         <div class="main" role="main">
+        
+        <div class="size">
+            <input type="text" name="test" value="Add to playlist" class="field" readonly="readonly" />
+            <ul class="list">
+                <li>Male - M</li>
+                <li>Female - M</li>
+                <li>Male - S</li>
+                <li>Female - S</li>
+            </ul>
+        </div>
+        
 			<table id="table">
                 <thead>
                     <?php  

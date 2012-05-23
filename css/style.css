@@ -9,7 +9,7 @@ audio:not([controls]) { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; overflow-y:scroll; }
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
-body { margin: 0; font-size: 1em; line-height: 1.4; background:url(../img/wl.jpg); }
+body { margin: 0; font-size: 1em; line-height: 1.4; background:url(../img/wl.jpg) center center fixed; }
 
 ::-moz-selection { background: #dc1f1f; color: #fff; text-shadow: none; }
 ::selection { background: #dc1f1f; color: #fff; text-shadow: none; }
@@ -413,6 +413,49 @@ input:focus, textarea:focus {
 	margin-left: 10px; 
 	color: #999999; 
 }
+
+/* ===== Select ===== */
+
+.size { position:relative }
+.size .field {
+	background:#fff; 
+	color:#EC6603; 
+	padding:5px; 
+	border:none; 
+	cursor:pointer;
+	font-family:'lucida sans unicode',sans-serif; font-size:1em;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.size .field:hover {
+
+}
+.size>ul.list { 
+	display:none;
+	position:absolute; 
+	z-index:999;
+	width:300px;
+	margin:0; 
+	padding:10px; 
+	list-style:none;
+	background:#fff; 
+	color:#333;
+	-moz-border-radius:5px; 
+	-webkit-border-radius:5px; 
+	border-radius:5px;
+	-moz-box-shadow:0 0 5px #999; 
+	-webkit-box-shadow:0 0 5px #999; 
+	box-shadow:0 0 5px #999
+}
+.size>ul.list li {
+	padding:10px;
+	border-bottom: solid 1px #ccc;
+}
+.size>ul.list li:hover {
+	background:#EC6603; color:#fff;
+}
+.size>ul.list li:last-child { border:none }
+
 
 
 /* =============================================================================
