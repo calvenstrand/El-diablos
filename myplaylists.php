@@ -44,13 +44,10 @@ session_start();
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
                 <div class="size">
-            <input type="text" name="test" value="choose your size" class="field" readonly="readonly" />
+            <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
+            <input type="hidden" name="select" value="" class="fest"/>
          <ul class="list">
-         <li>Male - M</li>
-         <li>Female - M</li>
-         <li>Male - S</li>
-        <li>Female - S</li>
-        <?php $pList->myPlaylists(); ?>
+            <?php $pList->myPlaylists(); ?>
             </ul>
             </div>
 
