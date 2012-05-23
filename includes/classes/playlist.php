@@ -166,17 +166,50 @@ public function showAllSongs($sortMode){
 	}
 	
 	
-		
+		if(isset($_GET['album'])){
 		$stmt = $mysqli->prepare(
-			"SELECT artists.name as artist, songs.name as song, songs.length as length,albums.name as album, albums.year as year, songs.id FROM songs
+			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			WHERE albums.name LIKE ?
+			ORDER BY $sortMode $way
+			");
+		 $stmt->bind_param( "s", $_GET['album']); 
+		// "ss' is a format string, each "s" means string
+		}else if(isset($_GET['artist'])){
+			$stmt = $mysqli->prepare(
+			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			WHERE artists.name LIKE ?
+			ORDER BY $sortMode $way
+			");
+		 $stmt->bind_param( "s", $_GET['artist']); 
+
+		}
+
+
+
+		else{
+			$stmt = $mysqli->prepare(
+			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
 			ORDER BY $sortMode $way
 			");
-		  
-		// "ss' is a format string, each "s" means string
+		
+
+		}
+
+
+
+
 		$stmt->execute();
 
 		$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
@@ -188,9 +221,9 @@ public function showAllSongs($sortMode){
 	echo '<tr><td>'
 	.$songname
 	.'</td><td>'
-	.$artistname
+	.'<a href="?artist='.$artistname.'">'.$artistname.'</a>'
 	.'</td><td>'
-	.$albumname
+	.'<a href="?album='.$albumname.'">'.$albumname.'</a>'
 	.'</td><td>'
 	.$songlength
 	.'</td><td>'
