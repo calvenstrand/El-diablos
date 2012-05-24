@@ -30,7 +30,7 @@ $playlistid = $_GET['playlistid'];
 
 $mysqli->close();
 
-header('Location: ../../myPlaylists.php?plist='.$playlistid);
+header('Location: ../../myplaylists.php?plist='.$playlistid);
 return false;
 
 		?>

@@ -23,8 +23,8 @@ session_start();
 			<?php
             $hostname_logon = "localhost" ;
             $database_logon = "diablofy" ;
-            $username_logon = "chippen1989" ;
-            $password_logon = "hest" ;
+            $username_logon = "root" ;
+            $password_logon = "" ;
             
             //open database connection
             $connections = mysql_connect($hostname_logon, $username_logon, $password_logon) or die ( "Unable to connect to the database" );
