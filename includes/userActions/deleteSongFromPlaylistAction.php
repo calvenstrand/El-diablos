@@ -16,7 +16,7 @@ $playlistid = $_GET['playlistid'];
 	
 
 	// "ss' is a format string, each "s" means string
-	$playlistid = 1;
+	//$playlistid = 1;
 	
 	$stmt->execute();
 	
@@ -29,6 +29,8 @@ $playlistid = $_GET['playlistid'];
 	
 
 $mysqli->close();
-header("Location: ../../myPlaylists.php")
+
+header('Location: ../../myPlaylists.php?plist='.$playlistid);
+return false;
 
 		?>

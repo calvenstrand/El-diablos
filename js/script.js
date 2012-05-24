@@ -37,12 +37,16 @@ $(window).load(function() {
 				});
 	
 				obj.find('.list li').click(function() { //onclick event, change field value with selected 'list' item and fadeout 'list'
+				var fest = $(this).attr('value');
+				obj.find('.fest').attr('value', fest);
+				console.log(fest);
 				obj.find('.field')
 					.val($(this).html())
 					.css({
 						'background':'#fff',
 						'color':'#333'
 					});
+
 				obj.find('.list').fadeOut(400);
 				});
 			});

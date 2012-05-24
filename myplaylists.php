@@ -42,35 +42,54 @@ session_start();
         <div class="main" role="main">
         	<h2 style="text-align:center">My Playlists</h2>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <select name="select">
-                <option>-- Välj Spellista --</option>
+
+                <div class="size">
+            <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
+            <input type="hidden" name="select" value="" class="fest"/>
+         <ul class="list">
+            <?php $pList->myPlaylists(); ?>
+            </ul>
+            </div>
+
+
+            
                 <?php
                     
-                    $pList->myPlaylists();
+
+
                     
-                
-                ?>
-        	</select>
+
+                   /* <select name="select">
+                <option>-- Välj Spellista --</option>  
+        	</select>*/
+
+
+
+            ?>
             <input type="submit" value="Change pList" name="send">
             </form>
+
           	<table id="table">
+                
                 <thead>
-                    <th><a href="?sort'Mode=song">Song</a></th>
-                    <th><a href="?sortMode=artist">Artist</a></th>
-                    <th><a href="?sortMode=album">Album</a></th>
-                    <th><a href="?sortMode=length">Length</a></th>
-                    <th><a href="?sortMode=year">Year</a></th>
-                    <th>Delete</th>
+                    <?php 
+                    echo '<th><a href="?sortMode=song&plist='.$plistChosen.'">Song</a></th>
+                    <th><a href="?sortMode=artist&plist='.$plistChosen.'">Artist</a></th>
+                    <th><a href="?sortMode=album&plist='.$plistChosen.'">Album</a></th>
+                    <th><a href="?sortMode=length&plist='.$plistChosen.'">Length</a></th>
+                    <th><a href="?sortMode=year&plist='.$plistChosen.'">Year</a></th>
+                    <th>Delete</th>';
+                    ?>
                 </thead>
                 <tbody>
                     <?php
                     if($plistChosen == 1){
-                    $pList->showPlaylist($playlistId);
+                    $pList->showPlaylist($playlistId, $sortMode);
                     }
                     ?>
                 </tbody>
             </table>  
-        
+        active list: <?php echo $pList->activePlistName; ?>
         </div>
     
         <?php

@@ -2,7 +2,7 @@
 
 class Playlist
 {
-
+var $activePlistName;
 	public function createPlaylist(){
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -87,21 +87,44 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 		$stmt->execute();
 		$stmt->bind_result($playlistName, $plistId);
 		while($row1 = $stmt->fetch()) {
-			echo '<option value="'.$plistId.'" name="plistID">'.$playlistName.'</option>';
+			echo '<li value="'.$plistId.'" name="plistID">'.$playlistName.'</li>';
 		}
 
 }
 
-public function showPlaylist($playlistId){
+public function showPlaylist($playlistId, $sortMode){
+
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
 		if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }else{
-	$value2 = 1;
-	$name = "Erics Life";
-	$length = "02:30";
-	
+	if(isset($_SESSION['lastWay'])){
 
+	$way = $_SESSION['lastWay'];
+
+	}else{
+
+		$way = 'ASC';
+	}
+	if(isset($_SESSION['lastSort'])){
+
+		if($_SESSION['lastSort'] == $sortMode){
+
+			
+			if($way == 'ASC'){
+			
+				$way = 'DESC';
+				
+			}else{
+				$way = 'ASC';
+			}
+			$_SESSION['lastWay'] = $way;
+
+		}
+
+	
+		
+			
 		$stmt = $mysqli->prepare(
 		  "SELECT playlists.name, artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
 		  LEFT JOIN playlists_songs ON (playlists_songs.songid=songs.id)
@@ -111,10 +134,11 @@ public function showPlaylist($playlistId){
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
 			WHERE playlists_songs.playlistid = ?
-
+			
 		  ");
 		$stmt->bind_param( "ii", $playlistId, $playlistId); 
-		// "ss' is a format string, each "s" means string
+		
+		
 		$stmt->execute();
 
 		$stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $songid);
@@ -122,7 +146,7 @@ public function showPlaylist($playlistId){
 
 		while ($row = $stmt->fetch()) {
 
-
+$this->activePlistName = $col1;
 echo '<tr><td>'
 .$col3
 .'</td><td>'
@@ -134,7 +158,7 @@ echo '<tr><td>'
 .'</td><td>'
 .$col6
 .'</td>'
-.'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$value2.'">Delete track from Playlist</a></td>'
+.'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'">Delete track from Playlist</a></td>'
 .'</tr>';
 
 
@@ -143,6 +167,8 @@ echo '<tr><td>'
 
 }
 
+$_SESSION['lastSort'] = $sortMode;
+}	
 }
 
 
