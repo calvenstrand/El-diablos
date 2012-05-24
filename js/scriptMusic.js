@@ -43,9 +43,10 @@ $(window).load(function() {
 				obj.find('.fest').attr('value', fest);
 				console.log(fest);
 				var finid = $(this).parent('ul').parent('div').children('.finid').attr('value');
+
 				
-				console.log(finid);
-				console.log(namm);
+				
+					
 					 $.post('includes/userActions/addSongToPlaylistAction.php?songid='+finid+'&plid='+fest, function(data) {
             			obj.find('.field')
 					.val('Added to: '+namm)

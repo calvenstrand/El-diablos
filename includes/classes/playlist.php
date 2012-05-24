@@ -298,12 +298,12 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 }
 
 
-public function inviteToPlaylist($userToInvite, $playlistid){
+public function inviteToPlaylist($userToInvite, $playlistid, $owner){
 $mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare(
 		  "INSERT INTO users_playlists (userid, playlistid, owner) VALUES (?, ?, ?)
 		  ");
-		 $stmt->bind_param( "iii", $userToInvite, $playlistid, $_SESSION['userid']); 
+		 $stmt->bind_param( "iii", $userToInvite, $playlistid, $owner); 
 		$stmt->execute();
 		
 		}

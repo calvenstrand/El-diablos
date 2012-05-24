@@ -110,7 +110,9 @@ session_start();
             <?php $pList->showUsers(); ?>
             </ul>
             </div>
-
+            
+            Check for friends to be able to edit the playlist
+            <input type="checkbox" id="owner"/>
         </div>
     
         <?php
