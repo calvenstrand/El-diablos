@@ -68,24 +68,28 @@ session_start();
             ?>
             <input type="submit" value="Change pList" name="send">
             </form>
+
           	<table id="table">
+                
                 <thead>
-                    <th><a href="?sort'Mode=song">Song</a></th>
-                    <th><a href="?sortMode=artist">Artist</a></th>
-                    <th><a href="?sortMode=album">Album</a></th>
-                    <th><a href="?sortMode=length">Length</a></th>
-                    <th><a href="?sortMode=year">Year</a></th>
-                    <th>Delete</th>
+                    <?php 
+                    echo '<th><a href="?sortMode=song&plist='.$plistChosen.'">Song</a></th>
+                    <th><a href="?sortMode=artist&plist='.$plistChosen.'">Artist</a></th>
+                    <th><a href="?sortMode=album&plist='.$plistChosen.'">Album</a></th>
+                    <th><a href="?sortMode=length&plist='.$plistChosen.'">Length</a></th>
+                    <th><a href="?sortMode=year&plist='.$plistChosen.'">Year</a></th>
+                    <th>Delete</th>';
+                    ?>
                 </thead>
                 <tbody>
                     <?php
                     if($plistChosen == 1){
-                    $pList->showPlaylist($playlistId);
+                    $pList->showPlaylist($playlistId, $sortMode);
                     }
                     ?>
                 </tbody>
             </table>  
-        
+        active list: <?php echo $pList->activePlistName; ?>
         </div>
     
         <?php
