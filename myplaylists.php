@@ -98,6 +98,13 @@ session_start();
             </table>  
         active list: <?php echo $pList->activePlistName; ?>
         <a href="">Skapa en ny spellista</a>
+        <div class="size">
+            <input type="text" name="noobChristoffer" value="Choose a user" class="field" readonly="readonly" />
+            <input type="hidden" name="selecta" value="" class="festen"/>
+         <ul class="list">
+            <?php $pList->showsers(); ?>
+            </ul>
+            </div>
         </div>
     
         <?php

@@ -276,6 +276,41 @@ public function showAllSongs($sortMode){
 
 }
 
+
+
+
+
+
+
+
+public function showUsers(){
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "SELECT users.id, users.name FROM users
+		  ");
+		$stmt->execute();
+		$stmt->bind_result($usersId, $username);
+		while($row1 = $stmt->fetch()) {
+			echo '<li value="'.$usersId.'" name="plistID">'.$username.'</li>';
+		}
+
+}
+
+
+public function inviteToPlaylist(){
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "INSERT INTO users_playlists (userid, playlistid, owner) VALUES (?, ?, ?)
+		  ");
+		 $stmt->bind_param( "iii", $userToInvite, $playlistid, $_SESSION['userid']); 
+		$stmt->execute();
+		$stmt->bind_result($usersId, $username);
+		while($row1 = $stmt->fetch()) {
+			echo '<li value="'.$usersId.'" name="plistID">'.$username.'</li>';
+		}
+
+}
+
 // End class
 	}	
 	
