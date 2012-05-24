@@ -190,7 +190,6 @@ header {
 	font: bold 12px Arial, Helvetica;
 }
 
-
 .login-bar ul {
 	margin: 0;
 	padding: 0;
@@ -403,7 +402,7 @@ textarea {
 	line-height: 150%;
 }
 
-input:hover, textarea:hover,
+.contact input:hover, textarea:hover,
 input:focus, textarea:focus { 
 	border-color: #C9C9C9; 
 	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
@@ -412,6 +411,23 @@ input:focus, textarea:focus {
 .form label { 
 	margin-left: 10px; 
 	color: #999999; 
+}
+
+.search {
+	position:absolute;
+}
+
+.search .submit {
+	padding: 4px 15px 4px 15px;
+	border: solid 1px #E5E5E5;
+	background: #FFFFFF url('bg_form.png') left top repeat-x;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+}
+
+.search input:hover, textarea:hover,
+input:focus, textarea:focus { 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
 }
 
 /* ===== Select ===== */
