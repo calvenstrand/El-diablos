@@ -3,41 +3,24 @@
 class Playlist
 {
 var $activePlistName;
-	public function createPlaylist(){
+	public function createPlaylist ($userid, $plist) {
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
     	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-	$value2 = 30;
-	$name = "Christoffers Playlist";
-	$length = "02:30";
-	
-
 	$stmt = $mysqli->prepare("INSERT INTO playlists (name) VALUES (?)");
-	$stmt->bind_param("s", $name); 
+	$stmt->bind_param("s", $plist); 
 	// "ss' is a format string, each "s" means string
 	$stmt->execute();
 
 	//New stuff
-
 	$stmt = $mysqli->prepare("INSERT INTO users_playlists (userid, playlistid, owner) VALUES (?, ?, ?)");
 	$stmt->bind_param("iii", $userid, $playlistid, $owner); 
 	// "ss' is a format string, each "s" means string
-	$userid = 1;
 	$playlistid = $mysqli->insert_id;
 	$owner = 1;
-
 	$stmt->execute();
-
-
-	echo 'inserted playlist: '.$name. 'id is: '.$mysqli->insert_id;
-
-
-
-	
-
-$mysqli->close();
-		
+	$mysqli->close();		
 }	
 	
 

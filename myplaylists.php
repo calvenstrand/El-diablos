@@ -41,7 +41,14 @@ session_start();
     
         <div class="main" role="main">
         	<h2 style="text-align:center">My Playlists</h2>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+					<div class="size">
+						<form id="addlist" action="includes/userActions/createPlaylist.php" method="post">
+          		<input id="addplist" type="text" name="playlistname" placeholder="Add a Playlist" class="field" style="margin-bottom:5px;" />
+						</form>
+          </div>
+
+
+							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
                 <div class="size">
             <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
@@ -96,5 +103,6 @@ session_start();
             include_once ('includes/footer.php');
         ?>
 	</div>
+	<script type="text/javascript" src="js/playlist.js"></script>
 </body>
 </html>
