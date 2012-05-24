@@ -1,6 +1,6 @@
 <?php
 $songid = $_GET['songid'];
-
+$playlistid = $_GET['plid'];
 
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -15,7 +15,7 @@ $songid = $_GET['songid'];
 	
 
 	// "ss' is a format string, each "s" means string
-	$playlistid = 1;
+	
 	
 	$stmt->execute();
 	

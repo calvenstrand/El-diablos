@@ -255,9 +255,20 @@ public function showAllSongs($sortMode){
 	.'</td><td>'
 	.$albumyear
 	.'</td>'
-	.'<td><a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a></td>'
+	.'<td>'
+	.'<div class="size">
+            <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
+            <input type="hidden" name="select" value="" class="fest"/>
+            <input type="hidden" name="id" value="'.$songid.'" class="finid"/>
+         <ul class="list">
+            ';
+            $this->myPlaylists();
+            echo'
+            </ul>
+            </div>'
+	.'</td>'
 	.'</tr>';
-
+//<a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a>
 
 	}
 	$_SESSION['lastSort'] = $sortMode;

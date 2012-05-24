@@ -77,7 +77,7 @@ session_start();
             </form>
 
           	<table id="table">
-                
+
                 <thead>
                     <?php 
                     echo '<th><a href="?sortMode=song&plist='.$plistChosen.'">Song</a></th>
@@ -97,12 +97,16 @@ session_start();
                 </tbody>
             </table>  
         active list: <?php echo $pList->activePlistName; ?>
+        <a href="">Skapa en ny spellista</a>
         </div>
     
         <?php
             include_once ('includes/footer.php');
         ?>
+
 	</div>
-	<script type="text/javascript" src="js/playlist.js"></script>
+	<script type="text/javascript" src="js/playlist.js"></script>=
+	<script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>
