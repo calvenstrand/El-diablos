@@ -28,7 +28,10 @@ session_start();
             </div>
         
         	<div class="main-child">
-            
+            	<form name="form" action="search.php" method="get">
+                    <input type="text" name="q" />
+                    <input type="submit" name="Submit" value="Search" />
+                </form>
             </div>
         
         </div>
