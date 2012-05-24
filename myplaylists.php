@@ -48,12 +48,12 @@ session_start();
           </div>
 
 
-							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+							<form id="chooseplist" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
                 <div class="size">
-            <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
-            <input type="hidden" name="select" value="" class="fest"/>
-         <ul class="list">
+            <input id="lolboll" type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
+            <input id="chooseplist" type="hidden" name="select" value="" class="fest"/>
+         <ul id="list" class="list">
             <?php $pList->myPlaylists(); ?>
             </ul>
             </div>
@@ -73,7 +73,6 @@ session_start();
 
 
             ?>
-            <input type="submit" value="Change pList" name="send">
             </form>
 
           	<table id="table">
@@ -96,15 +95,13 @@ session_start();
                     ?>
                 </tbody>
             </table>  
-        active list: <?php echo $pList->activePlistName; ?>
-        <a href="">Skapa en ny spellista</a>
-        <div class="size">
-            <input type="text" name="noobChristoffer" value="Choose a user" class="field" readonly="readonly" />
-            <input type="hidden" name="selecta" value="" class="festen"/>
-         <ul class="list">
-            <?php $pList->showsers(); ?>
-            </ul>
-            </div>
+
+        <?php
+				if ($pList->activePlistName) {
+					echo 'Active list: ' . $pList->activePlistName; 
+				}
+				?>
+
         </div>
     
         <?php
