@@ -98,9 +98,18 @@ session_start();
 
         <?php
 				if ($pList->activePlistName) {
-					echo 'Active list: ' . $pList->activePlistName; 
+					echo 'Active list: ' . $pList->activePlistName.'
+                    <input id="plidd" type="hidden" value="'.$pList->activePlistId.'"/> ';
 				}
+                
 				?>
+                  <div class="size">
+            <input id="feest" type="text" name="noobChristoffer" value="Invite a Friend" class="field" readonly="readonly" />
+            <input id="chooseplist" type="hidden" name="selecta" value="" class="fest"/>
+         <ul id="friendList" class="list">
+            <?php $pList->showUsers(); ?>
+            </ul>
+            </div>
 
         </div>
     

@@ -41,7 +41,7 @@ $(window).load(function() {
 				obj.find('.fest').attr('value', fest);
 				
 				obj.find('.field')
-					.val($(this).html())
+					.val('added: '+$(this).html())
 					.css({
 						'background':'#fff',
 						'color':'#333'

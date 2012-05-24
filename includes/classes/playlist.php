@@ -3,6 +3,7 @@
 class Playlist
 {
 var $activePlistName;
+var $activePlistId;
 	public function createPlaylist ($userid, $plist) {
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -18,7 +19,7 @@ var $activePlistName;
 	$stmt->bind_param("iii", $userid, $playlistid, $owner); 
 	// "ss' is a format string, each "s" means string
 	$playlistid = $mysqli->insert_id;
-	$owner = 1;
+	$owner = $_SESSION['userid'];
 	$stmt->execute();
 	$mysqli->close();		
 }	
@@ -130,6 +131,7 @@ public function showPlaylist($playlistId, $sortMode){
 		while ($row = $stmt->fetch()) {
 
 $this->activePlistName = $col1;
+$this->activePlistId = $playlistId;
 echo '<tr><td>'
 .$col3
 .'</td><td>'
@@ -285,11 +287,10 @@ public function showAllSongs($sortMode){
 
 public function showUsers(){
 $mysqli = new mysqli("localhost", "root", "", "diablofy");
-	$stmt = $mysqli->prepare(
-		  "SELECT users.id, users.name FROM users
-		  ");
+	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users");
 		$stmt->execute();
 		$stmt->bind_result($usersId, $username);
+
 		while($row1 = $stmt->fetch()) {
 			echo '<li value="'.$usersId.'" name="plistID">'.$username.'</li>';
 		}
@@ -297,19 +298,15 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 }
 
 
-public function inviteToPlaylist(){
+public function inviteToPlaylist($userToInvite, $playlistid){
 $mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare(
 		  "INSERT INTO users_playlists (userid, playlistid, owner) VALUES (?, ?, ?)
 		  ");
 		 $stmt->bind_param( "iii", $userToInvite, $playlistid, $_SESSION['userid']); 
 		$stmt->execute();
-		$stmt->bind_result($usersId, $username);
-		while($row1 = $stmt->fetch()) {
-			echo '<li value="'.$usersId.'" name="plistID">'.$username.'</li>';
+		
 		}
-
-}
 
 // End class
 	}	
