@@ -38,14 +38,24 @@ $(window).load(function() {
 	
 				obj.find('.list li').click(function() { //onclick event, change field value with selected 'list' item and fadeout 'list'
 				var fest = $(this).attr('value');
+				var finid = $('.finid').attr('value');
 				obj.find('.fest').attr('value', fest);
-				
+				console.log(fest);
+				console.log(finid);
 				obj.find('.field')
-					.val($(this).html())
+					.val('Added to: '+$(this).html())
 					.css({
 						'background':'#fff',
 						'color':'#333'
 					});
+
+						console.log('tryckt');
+					 $.post('includes/userActions/addSongToPlaylistAction.php?songid='+finid+'&plid='+fest, function(data) {
+            			console.log('tryckt2');
+            
+        				});
+
+
 
 				obj.find('.list').fadeOut(400);
 				});
