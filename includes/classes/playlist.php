@@ -76,6 +76,23 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 
 }
 
+public function addablePlaylists(){
+$userid = $_SESSION['userid'];
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "SELECT playlists.name, playlists.id FROM playlists
+		  LEFT JOIN users_playlists ON (users_playlists.playlistid=playlists.id)
+		  WHERE users_playlists.userid=? AND users_playlists.owner=1
+		  ");
+		$stmt->bind_param( "i", $userid); 
+		$stmt->execute();
+		$stmt->bind_result($playlistName, $plistId);
+		while($row1 = $stmt->fetch()) {
+			echo '<li value="'.$plistId.'" name="plistID">'.$playlistName.'</li>';
+		}
+
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -289,7 +306,7 @@ public function showAllSongs($sortMode){
             <input type="hidden" name="id" value="'.$songid.'" class="finid"/>
          <ul class="list">
             ';
-            $this->myPlaylists();
+            $this->addablePlaylists();
             echo'
             </ul>
             </div>'
