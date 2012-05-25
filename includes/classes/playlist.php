@@ -193,29 +193,73 @@ public function showAllSongs($sortMode){
 	
 		if(isset($_GET['album'])){
 			$_SESSION['selected'] = 'album='.$_GET['album'];
-		$stmt = $mysqli->prepare(
-			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			$stmt = $mysqli->prepare(
+			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			LEFT JOIN genres ON (genres.id=artists.genreid)
 			WHERE albums.name LIKE ?
 			ORDER BY $sortMode $way
 			");
-		 $stmt->bind_param( "s", $_GET['album']); 
+		 	$stmt->bind_param( "s", $_GET['album']);
+			
+			$stmt1 = $mysqli->prepare(
+			"SELECT artists.name, genres.id, albums.name FROM artists
+			LEFT JOIN genres ON (artists.genreid=genres.id)
+			LEFT JOIN artists_albums ON (artists.id=artists_albums.artistid)
+			LEFT JOIN albums ON (artists_albums.albumid=albums.id)
+			WHERE artists.genreid LIKE ?
+			");
+			$stmt1->bind_param("i", $_GET['genreid']);
+			$stmt1->execute();
+			$stmt1->bind_result($theartistname, $thegenreid, $thealbumname);
+			echo 'Similar artists: ';
+			$arr = array();
+			while ($row = $stmt1->fetch()) {
+				if ($thealbumname == $_GET['album']) {} else {
+					if ($theartistname == $_GET['artist']) {} else {
+						$arr[] = '<a href="?artist='.$theartistname.'&genreid='.$thegenreid.'">'.$theartistname.'</a>';
+					}
+				}
+			}
+
+			$uniquearr = array_unique($arr);
+			for ($i = 0; $i < sizeof($uniquearr); $i++) {
+				echo $uniquearr[$i] . ' ';
+			}
+
 		// "ss' is a format string, each "s" means string
 		}else if(isset($_GET['artist'])){
 			$_SESSION['selected'] = 'artist='.$_GET['artist'];
 			$stmt = $mysqli->prepare(
-			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			LEFT JOIN genres ON (genres.id=artists.genreid)
 			WHERE artists.name LIKE ?
 			ORDER BY $sortMode $way
 			");
-		 $stmt->bind_param( "s", $_GET['artist']); 
+		 	$stmt->bind_param( "s", $_GET['artist']); 
+
+			$stmt1 = $mysqli->prepare(
+			"SELECT artists.name, genres.id FROM artists
+			LEFT JOIN genres ON (artists.genreid=genres.id)
+			WHERE artists.genreid LIKE ?
+			");
+			$stmt1->bind_param("i", $_GET['genreid']);
+			$stmt1->execute();
+			$stmt1->bind_result($theartistname, $thegenreid);
+			echo 'Similar artists: ';
+			while ($row = $stmt1->fetch()) {
+				if ($theartistname == $_GET['artist']) {} else {
+			    echo '<a href="?artist=' . $theartistname . '&genreid=' . $thegenreid . '">' . $theartistname . '</a>';
+				}
+			}
+
 
 		}
 
@@ -224,11 +268,12 @@ public function showAllSongs($sortMode){
 		else{
 			$_SESSION['selected'] = '';
 			$stmt = $mysqli->prepare(
-			"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			LEFT JOIN genres ON (genres.id=artists.genreid)
 			ORDER BY $sortMode $way
 			");
 		
@@ -240,18 +285,17 @@ public function showAllSongs($sortMode){
 
 		$stmt->execute();
 
-		$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
+		$stmt->bind_result($genreid, $genre, $artistname, $songname, $songlength, $albumname, $albumyear, $songid);
 		// then fetch and close the statement
-
+		
 		while ($row = $stmt->fetch()) {
-
 
 	echo '<tr><td>'
 	.$songname
 	.'</td><td>'
-	.'<a href="?artist='.$artistname.'">'.$artistname.'</a>'
+	.'<a href="?artist='.$artistname.'&genreid='.$genreid.'">'.$artistname.'</a>'
 	.'</td><td>'
-	.'<a href="?album='.$albumname.'">'.$albumname.'</a>'
+	.'<a href="?artist='.$artistname.'&album='.$albumname.'&genreid='.$genreid.'">'.$albumname.'</a>'
 	.'</td><td>'
 	.$songlength
 	.'</td><td>'
