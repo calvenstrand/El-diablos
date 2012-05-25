@@ -14,31 +14,13 @@
 	<div id="container">
 		<?php
             include_once ('includes/header.php');
+            include('includes/classes/playlist.php');
+        $pList = new Playlist();
         ?>
     
         <div class="main" role="main">
 
-			<?php
-				$mysqli = new mysqli("localhost", "root", "", "diablofy");
-				$stmt = $mysqli->prepare(
-				"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
-				LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
-				LEFT JOIN artists ON (artists_songs.artistid=artists.id)
-				LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
-				LEFT JOIN albums ON (albums.id=albums_songs.albumid)
-				WHERE songs.name LIKE ? OR albums.name LIKE ? ");
-				
-				$stmt->bind_param( "ss", $nyh, $nyh); 
-				$nyh = '%'.$_POST['q'].'%';
-		   
-				$stmt->execute();
-	
-				$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
-			   
-				while ($row = $stmt->fetch()) {
-
-				?>
-				<table id="table">
+			<table id="table">
                     <thead>
                         <?php  
                         
@@ -51,7 +33,29 @@
                     </thead>
                     <tbody>
                     <tbody>
-                        <?php
+
+			<?php
+				$mysqli = new mysqli("localhost", "root", "", "diablofy");
+				$stmt = $mysqli->prepare(
+				"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+				LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+				LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+				LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+				LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+				WHERE (songs.name LIKE ?) OR (albums.name LIKE ?)");
+				
+				$stmt->bind_param( "ss", $nyh, $nyh); 
+				$nyh = '%'.$_POST['q'].'%';
+		   
+				$stmt->execute();
+	
+				$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
+			   
+				while ($row = $stmt->fetch()) {
+
+				
+				
+                        
 							echo '<tr><td>'
 							.$songname
 							.'</td><td>'
@@ -66,16 +70,17 @@
 								<input type="hidden" name="select" value="" class="fest"/>
 								<input type="hidden" name="id" value="'.$songid.'" class="finid"/>
 							 	<ul class="list">';
-								$this->addablePlaylists();
+								$pList->addablePlaylists();
 								echo'
 								</ul>
 								</div>'
 						.'</td>'
 						.'</tr>';
+						}
                         ?>
                     </tbody>
             	</table>
-            <?php } $stmt->num_rows; {
+            <?php  if($stmt->num_rows == 0) {
 						echo 'We couldnt find what you were looking for';
 					}
 			
