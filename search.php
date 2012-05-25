@@ -21,79 +21,31 @@ session_start();
         <div class="main" role="main">
 
 			<?php
-            $hostname_logon = "localhost" ;
-            $database_logon = "diablofy" ;
-            $username_logon = "root" ;
-            $password_logon = "" ;
+
+            $mysqli = new mysqli("localhost", "root", "", "diablofy");
+             $stmt = $mysqli->prepare(
+            "SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+            LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
+            LEFT JOIN artists ON (artists_songs.artistid=artists.id)
+            LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
+            LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+            WHERE songs.name LIKE ?
             
-            //open database connection
-            $connections = mysql_connect($hostname_logon, $username_logon, $password_logon) or die ( "Unable to connect to the database" );
-            
-            //select database
-            mysql_select_db($database_logon) or die ( "Unable to select database!" );
-            
-            //specify how many results to display per page
-            $limit = 10;
-            
-            // Get the search variable from URL
-            $var = @$_GET['q'] ;
-            
-            //trim whitespace from the stored variable
-            $trimmed = trim($var);
-            
-            //separate key-phrases into keywords
-            $trimmed_array = explode(" ",$trimmed); // check for an empty string and display a message.
-            
-            if ($trimmed == "") {
-                $resultmsg =  "<p>Search Error</p><p>Please enter a search…</p>" ;
-            }
-			
-			// check for a search parameter
-            if (!isset($var)){
-                $resultmsg =  "<p>Search Error</p><p>We don’t seem to have a search parameter! </p>" ;
+            ");
+         $stmt->bind_param( "s", $nyh); 
+         $nyh = '%'.$_POST['q'].'%';
+       
+        $stmt->execute();
+
+        $stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
+           
+            while ($row = $stmt->fetch()) {
+
+                echo $songname.'<br />';
             }
             
-            // Build SQL Query for each keyword entered
-            foreach ($trimmed_array as $trimm){
             
-            // EDIT HERE and specify your table and field names for the SQL query
-            $query = "SELECT * FROM songs AND artists AND albums WHERE name LIKE \"%$trimm%\" ORDER BY name DESC" ;
-            
-            // Execute the query to  get number of rows that contain search kewords
-            $numresults = mysql_query($query);
-            $row_num_links_main = mysql_num_rows($numresults);     
-            
-            // next determine if ‘s’ has been passed to script, if not use 0.
-            // ‘s’ is a variable that gets set as we navigate the search result pages.
-            if (empty($s)) {
-                $s=0;
-            }     
-            
-            // now let’s get results.
-            $query .= " LIMIT $s,$limit" ;
-            $numresults = mysql_query ($query) or die ( "Couldn’t execute query" );
-            $row= mysql_fetch_array ($numresults);
-            
-            //store record id of every item that contains the keyword in the array we need to do this to avoid display of duplicate search result.
-            do {
-                //EDIT HERE and specify your field name that is primary key
-                $adid_array[] = $row[ 'customer_id' ];
-            }
-            
-            while( $row= mysql_fetch_array($numresults));
-            } //end foreach
-            
-            if($row_num_links_main == 0 && $row_set_num == 0){
-                $resultmsg = "<p>Search results for: $trimmed </p><p>Sorry, your search returned zero results</p>" ;
-            }
-            
-            //delete duplicate record id’s from the array. To do this we will use array_unique function
-            $tmparr = array_unique($adid_array);
-            $i=0;
-            foreach ($tmparr as $v) {
-                $newarr[$i] = $v;
-                $i++;
-            } // now you can display the results returned. But first we will display the search form on the top of the page
+           
             
             ?>
             

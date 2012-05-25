@@ -19,7 +19,7 @@ var $activePlistId;
 	$stmt->bind_param("iii", $userid, $playlistid, $owner); 
 	// "ss' is a format string, each "s" means string
 	$playlistid = $mysqli->insert_id;
-	$owner = $_SESSION['userid'];
+	$owner = 1;
 	$stmt->execute();
 	$mysqli->close();		
 }	
@@ -76,6 +76,23 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 
 }
 
+public function addablePlaylists(){
+$userid = $_SESSION['userid'];
+$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$stmt = $mysqli->prepare(
+		  "SELECT playlists.name, playlists.id FROM playlists
+		  LEFT JOIN users_playlists ON (users_playlists.playlistid=playlists.id)
+		  WHERE users_playlists.userid=? AND users_playlists.owner=1
+		  ");
+		$stmt->bind_param( "i", $userid); 
+		$stmt->execute();
+		$stmt->bind_result($playlistName, $plistId);
+		while($row1 = $stmt->fetch()) {
+			echo '<li value="'.$plistId.'" name="plistID">'.$playlistName.'</li>';
+		}
+
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -107,7 +124,21 @@ public function showPlaylist($playlistId, $sortMode){
 		}
 
 	
+		$newStmt = $mysqli->prepare(
+		  "SELECT users_playlists.owner  FROM users_playlists
+			WHERE users_playlists.userid = ?
+			AND users_playlists.playlistid = ?
+		  ");
+		$newStmt->bind_param( "ii", $_SESSION['userid'], $playlistId); 
 		
+		
+		$newStmt->execute();
+
+		$newStmt->bind_result($owner);
+		while ($row = $newStmt->fetch()) {
+			$dunder = $owner;
+		}
+
 			
 		$stmt = $mysqli->prepare(
 		  "SELECT playlists.name, artists.name, songs.name, songs.length,albums.name, albums.year, songs.id FROM songs
@@ -117,6 +148,7 @@ public function showPlaylist($playlistId, $sortMode){
 			LEFT JOIN playlists ON (playlists.id= ?)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 			LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+			
 			WHERE playlists_songs.playlistid = ?
 			
 		  ");
@@ -127,6 +159,9 @@ public function showPlaylist($playlistId, $sortMode){
 
 		$stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $songid);
 		// then fetch and close the statement
+
+
+		
 
 		while ($row = $stmt->fetch()) {
 
@@ -142,9 +177,16 @@ echo '<tr><td>'
 .$col4
 .'</td><td>'
 .$col6
-.'</td>'
-.'<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'">Delete track from Playlist</a></td>'
-.'</tr>';
+.'</td>';
+if($dunder == 1){
+echo '<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'">Delete track from Playlist</a></td>';
+
+}else{
+	echo '<td></td>';
+}
+
+
+echo '</tr>';
 
 
 
@@ -308,7 +350,7 @@ public function showAllSongs($sortMode){
             <input type="hidden" name="id" value="'.$songid.'" class="finid"/>
          <ul class="list">
             ';
-            $this->myPlaylists();
+            $this->addablePlaylists();
             echo'
             </ul>
             </div>'

@@ -2,7 +2,7 @@
 				
 	<div class="login-bar" />
     	<div class="search">			
-            <form name="form" action="search.php" method="get">
+            <form name="form" action="search.php" method="POST">
                 Search for your favorite song: 
                 <input type="text" name="q" />
                 <input type="submit" name="Submit" value="Search" class="submit" />
