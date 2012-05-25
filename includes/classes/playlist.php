@@ -298,7 +298,8 @@ public function showAllSongs($sortMode){
 			echo 'Similar artists: ';
 			while ($row = $stmt1->fetch()) {
 				if ($theartistname == $_GET['artist']) {} else {
-			    echo '<a href="?artist=' . $theartistname . '&genreid=' . $thegenreid . '">' . $theartistname . '</a>';
+			    echo '<span><a href="?artist=' . $theartistname . '&genreid=' . $thegenreid . '">' . $theartistname . '</a><span>';
+					echo ' ';
 				}
 			}
 
