@@ -340,6 +340,8 @@ public function showAllSongs($sortMode){
 	.'</td><td>'
 	.'<a href="?artist='.$artistname.'&album='.$albumname.'&genreid='.$genreid.'">'.$albumname.'</a>'
 	.'</td><td>'
+	.$genre
+	.'</td><td>'
 	.$songlength
 	.'</td><td>'
 	.$albumyear
