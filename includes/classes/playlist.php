@@ -441,8 +441,10 @@ public function showAllSongs($sortMode){
 
 
 public function showUsers(){
+	$actualid = $_SESSION['userid'];
 $mysqli = new mysqli("localhost", "root", "", "diablofy");
-	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users");
+	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users
+		WHERE (users.id != '$actualid')");
 		$stmt->execute();
 		$stmt->bind_result($usersId, $username);
 
