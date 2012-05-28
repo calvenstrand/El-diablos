@@ -22,17 +22,17 @@ session_start();
 				<form name="registerform" method="post" action="includes/userActions/register.php">
 					<div class="cont">
 					<?php
-					if (!$_GET['error']) {	
+					if (isset($_GET['error'])) {	
 						if ($_GET['error'] == 1) {
 					?>
 						<label for="name">Username - <span style="color:#FF0000">Already taken</span></label>
 					<?php 
-						} else {
+						}} else {
 					?>
 						<label for="name">Username</label>	
 					<?php
 						}
-					}
+					
 					?>
 						<input type="text" name="username" id="name" required="required" />
 					</div>

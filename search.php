@@ -42,9 +42,9 @@
 				LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 				LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 				LEFT JOIN albums ON (albums.id=albums_songs.albumid)
-				WHERE (songs.name LIKE ?) OR (albums.name LIKE ?)");
+				WHERE (songs.name LIKE ?) OR (albums.name LIKE ?) OR (artists.name LIKE ?)");
 				
-				$stmt->bind_param( "ss", $nyh, $nyh); 
+				$stmt->bind_param( "sss", $nyh, $nyh, $nyh); 
 				$nyh = '%'.$_POST['q'].'%';
 		   
 				$stmt->execute();
