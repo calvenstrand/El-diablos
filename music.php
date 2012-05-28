@@ -52,7 +52,11 @@
                         <th><a href="?sortMode=length'.$argument.'">Length</a></th>
                         <th><a href="?sortMode=year'.$argument.'">Year</a></th>
                     ';?>
-                    <th>Add</th>
+                    <th>
+                        <?php if (isset($_SESSION['userid'])){
+                            echo 'Add';
+                        } ?>
+                        </th>
                 </thead>
                 <tbody>
                     <?php
