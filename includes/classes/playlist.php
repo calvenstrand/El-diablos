@@ -199,7 +199,7 @@ echo '<tr><td>'
 .$col6
 .'</td>';
 if($dunder == 1){
-echo '<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'">Delete track from Playlist</a></td>';
+echo '<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'"><img alt="Delete" src="img/cross.png" /></a></td>';
 
 }else{
 	echo '<td></td>';
