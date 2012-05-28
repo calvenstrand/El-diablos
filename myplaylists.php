@@ -24,6 +24,7 @@ session_start();
         if(isset($_GET['plist'])){
             $plistChosen = 1;
             $playlistId = $_GET['plist'];
+						$pList->plistidfix($playlistId);
         }else{
             $plistChosen = 0;
         }
