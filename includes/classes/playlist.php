@@ -251,7 +251,7 @@ public function showAllSongs($sortMode){
 		if(isset($_GET['album'])){
 			$_SESSION['selected'] = 'album='.$_GET['album'];
 			$stmt = $mysqli->prepare(
-			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name AS genre, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
@@ -291,7 +291,7 @@ public function showAllSongs($sortMode){
 		}else if(isset($_GET['artist'])){
 			$_SESSION['selected'] = 'artist='.$_GET['artist'];
 			$stmt = $mysqli->prepare(
-			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name AS genre, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
@@ -322,11 +322,11 @@ public function showAllSongs($sortMode){
 		}else if(isset($_GET['search'])){
 			//Searchgrej
 			//$_SESSION['selected'] = 'album='.$_GET['album'];
-			if(isset($_POST['q'])){
-			$searchQuote = '%'.$_POST['q'].'%';
+			if(isset($_GET['search'])){
+			$searchQuote = '%'.$_GET['search'].'%';
 			}
 			$stmt = $mysqli->prepare(
-			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name AS genre, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
@@ -376,7 +376,7 @@ public function showAllSongs($sortMode){
 		else{
 			$_SESSION['selected'] = '';
 			$stmt = $mysqli->prepare(
-			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+			"SELECT artists.genreid AS genreid, genres.name AS genre, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 			LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 			LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)

@@ -26,7 +26,18 @@
         if(isset($_SESSION['selected'])){
             $argument = '&'.$_SESSION['selected'];
         }else{
+            
             $argument = '';
+        }
+
+        if(isset($_GET['search'])){
+            if(isset($_POST['q'])){
+             $_GET['search'] = $_POST['q'];   
+            }
+            
+            $arg2 = '&search='.$_GET['search'];
+        }else{
+            $arg2='';
         }
 
 	?>
@@ -46,12 +57,12 @@
                 <thead>
                     <?php  
                     
-                     echo'<th><a href="?sortMode=song'.$argument.'">Song</a></th>
-                        <th><a href="?sortMode=artist'.$argument.'">Artist</a></th>
-                        <th><a href="?sortMode=album'.$argument.'">Album</a></th>
-                        <th><a href="?sortMode=genre'.$argument.'">Genre</a></th>
-                        <th><a href="?sortMode=length'.$argument.'">Length</a></th>
-                        <th><a href="?sortMode=year'.$argument.'">Year</a></th>
+                     echo'<th><a href="?sortMode=song'.$argument.$arg2.'">Song</a></th>
+                        <th><a href="?sortMode=artist'.$argument.$arg2.'">Artist</a></th>
+                        <th><a href="?sortMode=album'.$argument.$arg2.'">Album</a></th>
+                        <th><a href="?sortMode=genre'.$argument.$arg2.'">Genre</a></th>
+                        <th><a href="?sortMode=length'.$argument.$arg2.'">Length</a></th>
+                        <th><a href="?sortMode=year'.$argument.$arg2.'">Year</a></th>
                     ';?>
                     <th>
                         <?php if (isset($_SESSION['userid'])){
