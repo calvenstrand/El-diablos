@@ -24,6 +24,9 @@ session_start();
                     <div id="slider" class="nivoSlider">
                         <img src="img/bild1.jpg" />
                         <img src="img/bild2.jpg" />
+												<img src="img/bild3.jpg" />
+												<img src="img/bild4.jpg" />
+												<img src="img/bild5.jpg" />
                     </div>
             </div>
         
