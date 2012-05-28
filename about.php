@@ -20,11 +20,7 @@ session_start();
     
         <div class="main" role="main">
             <h2 style="text-align:center">About us</h2>
-            We are three incredebly handsome guys that runs El-diablo AB wich drives the development of diablofy. We're based in Stockholm, Sweden and we love to fight little girls at night. We also have great individual qualities that makes us the perfect team, Rasmus is the ultimate party dj and is also a talanted ice skater and will compete in the next winter olympics. Eric is the teams master chef, we often say that he is a woman trapped in a mans body. And then there is Christoffer, the purest definition of awesomeness.
-            
-            <div  class="aboutimg">
-            	<img src="img/we.jpg">
-            </div>
+           
         </div>
     
         <?php
