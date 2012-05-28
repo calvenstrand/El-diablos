@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.4.10.1deb1
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: May 28, 2012 at 01:31 PM
+- Server version: 5.5.22
+- PHP Version: 5.3.10-1ubuntu3.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="diablofy" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="albums">
+                CREATE TABLE `albums` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` text NOT NULL,
+                  `year` int(10) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="albums_songs">
+                CREATE TABLE `albums_songs` (
+                  `albumid` int(10) unsigned NOT NULL,
+                  `songid` int(10) unsigned NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="artists">
+                CREATE TABLE `artists` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` text NOT NULL,
+                  `genreid` int(10) unsigned NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="artists_albums">
+                CREATE TABLE `artists_albums` (
+                  `artistid` int(10) unsigned NOT NULL,
+                  `albumid` int(10) unsigned NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="artists_songs">
+                CREATE TABLE `artists_songs` (
+                  `artistid` int(10) unsigned NOT NULL,
+                  `songid` int(10) unsigned NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="genres">
+                CREATE TABLE `genres` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="playlists">
+                CREATE TABLE `playlists` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="playlists_songs">
+                CREATE TABLE `playlists_songs` (
+                  `playlistid` int(10) unsigned NOT NULL,
+                  `songid` int(10) unsigned NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="songs">
+                CREATE TABLE `songs` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `name` text NOT NULL,
+                  `length` varchar(30) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `username` text NOT NULL,
+                  `password` text NOT NULL,
+                  `email` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users_playlists">
+                CREATE TABLE `users_playlists` (
+                  `userid` int(11) NOT NULL,
+                  `playlistid` int(11) NOT NULL,
+                  `owner` int(11) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'diablofy'
+    -->
+    <database name="diablofy">
+        <!-- Table albums -->
+        <table name="albums">
+            <column name="id">1</column>
+            <column name="name">Somewhere In Time</column>
+            <column name="year">1986</column>
+        </table>
+        <table name="albums">
+            <column name="id">2</column>
+            <column name="name">Powerslave</column>
+            <column name="year">1984</column>
+        </table>
+        <table name="albums">
+            <column name="id">3</column>
+            <column name="name">...And Justice For All</column>
+            <column name="year">1988</column>
+        </table>
+        <table name="albums">
+            <column name="id">4</column>
+            <column name="name">City Of Evil</column>
+            <column name="year">2005</column>
+        </table>
+        <table name="albums">
+            <column name="id">5</column>
+            <column name="name">Nightmare</column>
+            <column name="year">2010</column>
+        </table>
+        <table name="albums">
+            <column name="id">6</column>
+            <column name="name">In Waves</column>
+            <column name="year">2011</column>
+        </table>
+        <table name="albums">
+            <column name="id">7</column>
+            <column name="name">One Day Remains</column>
+            <column name="year">2004</column>
+        </table>
+        <table name="albums">
+            <column name="id">8</column>
+            <column name="name">Back In Black</column>
+            <column name="year">1980</column>
+        </table>
+        <!-- Table albums_songs -->
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">1</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">2</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">3</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">4</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">5</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">6</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">7</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">1</column>
+            <column name="songid">8</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">9</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">10</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">11</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">12</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">13</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">14</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">15</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">2</column>
+            <column name="songid">16</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">17</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">18</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">19</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">20</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">21</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">22</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">23</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">24</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">3</column>
+            <column name="songid">25</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">26</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">27</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">28</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">29</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">30</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">31</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">32</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">33</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">34</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">35</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">4</column>
+            <column name="songid">36</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">37</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">38</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">39</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">40</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">41</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">42</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">43</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">44</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">45</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">46</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">5</column>
+            <column name="songid">47</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">48</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">49</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">50</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">51</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">52</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">53</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">54</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">55</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">56</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">57</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">58</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">59</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">6</column>
+            <column name="songid">60</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">61</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">62</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">63</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">64</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">65</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">66</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">67</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">68</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">69</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">70</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">7</column>
+            <column name="songid">71</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">72</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">73</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">74</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">75</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">76</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">77</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">78</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">79</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">80</column>
+        </table>
+        <table name="albums_songs">
+            <column name="albumid">8</column>
+            <column name="songid">81</column>
+        </table>
+        <!-- Table artists -->
+        <table name="artists">
+            <column name="id">1</column>
+            <column name="name">Iron Maiden</column>
+            <column name="genreid">3</column>
+        </table>
+        <table name="artists">
+            <column name="id">2</column>
+            <column name="name">Metallica</column>
+            <column name="genreid">2</column>
+        </table>
+        <table name="artists">
+            <column name="id">3</column>
+            <column name="name">Avenged Sevenfold</column>
+            <column name="genreid">1</column>
+        </table>
+        <table name="artists">
+            <column name="id">4</column>
+            <column name="name">Trivium</column>
+            <column name="genreid">2</column>
+        </table>
+        <table name="artists">
+            <column name="id">5</column>
+            <column name="name">Alter Bridge</column>
+            <column name="genreid">1</column>
+        </table>
+        <table name="artists">
+            <column name="id">6</column>
+            <column name="name">AC/DC</column>
+            <column name="genreid">3</column>
+        </table>
+        <!-- Table artists_albums -->
+        <table name="artists_albums">
+            <column name="artistid">1</column>
+            <column name="albumid">1</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">1</column>
+            <column name="albumid">2</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">2</column>
+            <column name="albumid">3</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">3</column>
+            <column name="albumid">4</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">3</column>
+            <column name="albumid">5</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">4</column>
+            <column name="albumid">6</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">5</column>
+            <column name="albumid">7</column>
+        </table>
+        <table name="artists_albums">
+            <column name="artistid">6</column>
+            <column name="albumid">8</column>
+        </table>
+        <!-- Table artists_songs -->
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">1</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">2</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">3</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">4</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">5</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">6</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">7</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">8</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">9</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">10</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">11</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">12</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">13</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">14</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">15</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">1</column>
+            <column name="songid">16</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">17</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">18</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">19</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">20</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">21</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">22</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">23</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">24</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">2</column>
+            <column name="songid">25</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">26</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">27</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">28</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">29</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">30</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">31</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">32</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">33</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">34</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">35</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">36</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">37</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">38</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">39</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">40</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">41</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">42</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">43</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">44</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">45</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">46</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">3</column>
+            <column name="songid">47</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">48</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">49</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">50</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">51</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">52</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">53</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">54</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">55</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">56</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">57</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">58</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">59</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">4</column>
+            <column name="songid">60</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">61</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">62</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">63</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">64</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">65</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">66</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">67</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">68</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">69</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">70</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">5</column>
+            <column name="songid">71</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">72</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">73</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">74</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">75</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">76</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">77</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">78</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">79</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">80</column>
+        </table>
+        <table name="artists_songs">
+            <column name="artistid">6</column>
+            <column name="songid">81</column>
+        </table>
+        <!-- Table genres -->
+        <table name="genres">
+            <column name="id">1</column>
+            <column name="name">Metal</column>
+        </table>
+        <table name="genres">
+            <column name="id">2</column>
+            <column name="name">Thrash Metal</column>
+        </table>
+        <table name="genres">
+            <column name="id">3</column>
+            <column name="name">Heavy Metal</column>
+        </table>
+        <!-- Table playlists -->
+        <!-- Table playlists_songs -->
+        <!-- Table songs -->
+        <table name="songs">
+            <column name="id">1</column>
+            <column name="name">Caught Somewhere In Time</column>
+            <column name="length">07:26</column>
+        </table>
+        <table name="songs">
+            <column name="id">2</column>
+            <column name="name">Wasted Years</column>
+            <column name="length">05:08</column>
+        </table>
+        <table name="songs">
+            <column name="id">3</column>
+            <column name="name">Sea Of Madness</column>
+            <column name="length">05:42</column>
+        </table>
+        <table name="songs">
+            <column name="id">4</column>
+            <column name="name">Heaven Can Wait</column>
+            <column name="length">07:21</column>
+        </table>
+        <table name="songs">
+            <column name="id">5</column>
+            <column name="name">The Loneliness Of The Long Distance Runner</column>
+            <column name="length">06:31</column>
+        </table>
+        <table name="songs">
+            <column name="id">6</column>
+            <column name="name">Stranger In A Strange Land</column>
+            <column name="length">05:45</column>
+        </table>
+        <table name="songs">
+            <column name="id">7</column>
+            <column name="name">Deja-Vu</column>
+            <column name="length">04:56</column>
+        </table>
+        <table name="songs">
+            <column name="id">8</column>
+            <column name="name">Alexander The Great</column>
+            <column name="length">08:36</column>
+        </table>
+        <table name="songs">
+            <column name="id">9</column>
+            <column name="name">Aces High</column>
+            <column name="length">04:29</column>
+        </table>
+        <table name="songs">
+            <column name="id">10</column>
+            <column name="name">2 Minutes To Midnight</column>
+            <column name="length">06:00</column>
+        </table>
+        <table name="songs">
+            <column name="id">11</column>
+            <column name="name">Losfer Words (Big 'Orra)</column>
+            <column name="length">04:13</column>
+        </table>
+        <table name="songs">
+            <column name="id">12</column>
+            <column name="name">Flash Of The Blade</column>
+            <column name="length">04:03</column>
+        </table>
+        <table name="songs">
+            <column name="id">13</column>
+            <column name="name">The Duellists</column>
+            <column name="length">06:06</column>
+        </table>
+        <table name="songs">
+            <column name="id">14</column>
+            <column name="name">Back In The Village</column>
+            <column name="length">05:21</column>
+        </table>
+        <table name="songs">
+            <column name="id">15</column>
+            <column name="name">Powerslave</column>
+            <column name="length">06:48</column>
+        </table>
+        <table name="songs">
+            <column name="id">16</column>
+            <column name="name">Rime Of The Ancient Mariner</column>
+            <column name="length">13:34</column>
+        </table>
+        <table name="songs">
+            <column name="id">17</column>
+            <column name="name">Blackened</column>
+            <column name="length">06:42</column>
+        </table>
+        <table name="songs">
+            <column name="id">18</column>
+            <column name="name">...And Justice For All</column>
+            <column name="length">09:45</column>
+        </table>
+        <table name="songs">
+            <column name="id">19</column>
+            <column name="name">Eye Of The Beholder</column>
+            <column name="length">06:25</column>
+        </table>
+        <table name="songs">
+            <column name="id">20</column>
+            <column name="name">One</column>
+            <column name="length">07:24</column>
+        </table>
+        <table name="songs">
+            <column name="id">21</column>
+            <column name="name">The Shortest Straw</column>
+            <column name="length">06:35</column>
+        </table>
+        <table name="songs">
+            <column name="id">22</column>
+            <column name="name">Harvester Of Sorrow</column>
+            <column name="length">05:45</column>
+        </table>
+        <table name="songs">
+            <column name="id">23</column>
+            <column name="name">The Frayed Ends Of Sanity</column>
+            <column name="length">07:43</column>
+        </table>
+        <table name="songs">
+            <column name="id">24</column>
+            <column name="name">To Live Is To Die</column>
+            <column name="length">09:48</column>
+        </table>
+        <table name="songs">
+            <column name="id">25</column>
+            <column name="name">Dyers Eve</column>
+            <column name="length">05:13</column>
+        </table>
+        <table name="songs">
+            <column name="id">26</column>
+            <column name="name">Beast and the Harlot</column>
+            <column name="length">05:40</column>
+        </table>
+        <table name="songs">
+            <column name="id">27</column>
+            <column name="name">Burn It Down</column>
+            <column name="length">04:58</column>
+        </table>
+        <table name="songs">
+            <column name="id">28</column>
+            <column name="name">Blinded in Chains</column>
+            <column name="length">06:34</column>
+        </table>
+        <table name="songs">
+            <column name="id">29</column>
+            <column name="name">Bat Country</column>
+            <column name="length">05:13</column>
+        </table>
+        <table name="songs">
+            <column name="id">30</column>
+            <column name="name">Trashed And Scattered</column>
+            <column name="length">05:53</column>
+        </table>
+        <table name="songs">
+            <column name="id">31</column>
+            <column name="name">Seize the Day</column>
+            <column name="length">05:32</column>
+        </table>
+        <table name="songs">
+            <column name="id">32</column>
+            <column name="name">Sidewinder</column>
+            <column name="length">07:01</column>
+        </table>
+        <table name="songs">
+            <column name="id">33</column>
+            <column name="name">The Wicked End</column>
+            <column name="length">07:10</column>
+        </table>
+        <table name="songs">
+            <column name="id">34</column>
+            <column name="name">Strength of the World</column>
+            <column name="length">09:14</column>
+        </table>
+        <table name="songs">
+            <column name="id">35</column>
+            <column name="name">Betrayed</column>
+            <column name="length">06:47</column>
+        </table>
+        <table name="songs">
+            <column name="id">36</column>
+            <column name="name">M.I.A.</column>
+            <column name="length">08:46</column>
+        </table>
+        <table name="songs">
+            <column name="id">37</column>
+            <column name="name">Nightmare</column>
+            <column name="length">05:30</column>
+        </table>
+        <table name="songs">
+            <column name="id">38</column>
+            <column name="name">Welcome to the Family</column>
+            <column name="length">04:07</column>
+        </table>
+        <table name="songs">
+            <column name="id">39</column>
+            <column name="name">Danger Line</column>
+            <column name="length">05:30</column>
+        </table>
+        <table name="songs">
+            <column name="id">40</column>
+            <column name="name">Buried Alive</column>
+            <column name="length">06:43</column>
+        </table>
+        <table name="songs">
+            <column name="id">41</column>
+            <column name="name">Natural Born Killer</column>
+            <column name="length">05:17</column>
+        </table>
+        <table name="songs">
+            <column name="id">42</column>
+            <column name="name">So Far Away</column>
+            <column name="length">05:29</column>
+        </table>
+        <table name="songs">
+            <column name="id">43</column>
+            <column name="name">God Hates Us</column>
+            <column name="length">05:21</column>
+        </table>
+        <table name="songs">
+            <column name="id">44</column>
+            <column name="name">Victim</column>
+            <column name="length">07:31</column>
+        </table>
+        <table name="songs">
+            <column name="id">45</column>
+            <column name="name">Tonight the World Dies</column>
+            <column name="length">04:43</column>
+        </table>
+        <table name="songs">
+            <column name="id">46</column>
+            <column name="name">Fiction</column>
+            <column name="length">05:14</column>
+        </table>
+        <table name="songs">
+            <column name="id">47</column>
+            <column name="name">Save Me</column>
+            <column name="length">10:56</column>
+        </table>
+        <table name="songs">
+            <column name="id">48</column>
+            <column name="name">Capsizing The Sea</column>
+            <column name="length">01:30</column>
+        </table>
+        <table name="songs">
+            <column name="id">49</column>
+            <column name="name">In Waves</column>
+            <column name="length">05:02</column>
+        </table>
+        <table name="songs">
+            <column name="id">50</column>
+            <column name="name">Inception Of The End</column>
+            <column name="length">03:48</column>
+        </table>
+        <table name="songs">
+            <column name="id">51</column>
+            <column name="name">Dusk Dismantled</column>
+            <column name="length">03:47</column>
+        </table>
+        <table name="songs">
+            <column name="id">52</column>
+            <column name="name">Watch The World Burn</column>
+            <column name="length">04:53</column>
+        </table>
+        <table name="songs">
+            <column name="id">53</column>
+            <column name="name">Black</column>
+            <column name="length">03:27</column>
+        </table>
+        <table name="songs">
+            <column name="id">54</column>
+            <column name="name">A Skyline's Severance</column>
+            <column name="length">04:52</column>
+        </table>
+        <table name="songs">
+            <column name="id">55</column>
+            <column name="name">Built To Fall</column>
+            <column name="length">03:08</column>
+        </table>
+        <table name="songs">
+            <column name="id">56</column>
+            <column name="name">Caustic Are The Ties That Bind</column>
+            <column name="length">05:34</column>
+        </table>
+        <table name="songs">
+            <column name="id">57</column>
+            <column name="name">Forsake Not The Dream</column>
+            <column name="length">05:20</column>
+        </table>
+        <table name="songs">
+            <column name="id">58</column>
+            <column name="name">Chaos Reigns</column>
+            <column name="length">04:07</column>
+        </table>
+        <table name="songs">
+            <column name="id">59</column>
+            <column name="name">Of All These Yesterdays</column>
+            <column name="length">04:21</column>
+        </table>
+        <table name="songs">
+            <column name="id">60</column>
+            <column name="name">Leaving This World Behind</column>
+            <column name="length">01:32</column>
+        </table>
+        <table name="songs">
+            <column name="id">61</column>
+            <column name="name">Find The Real</column>
+            <column name="length">04:43</column>
+        </table>
+        <table name="songs">
+            <column name="id">62</column>
+            <column name="name">One Day Remains</column>
+            <column name="length">04:05</column>
+        </table>
+        <table name="songs">
+            <column name="id">63</column>
+            <column name="name">Open Your Eyes</column>
+            <column name="length">04:58</column>
+        </table>
+        <table name="songs">
+            <column name="id">64</column>
+            <column name="name">Burn It Down</column>
+            <column name="length">06:11</column>
+        </table>
+        <table name="songs">
+            <column name="id">65</column>
+            <column name="name">Metalingus</column>
+            <column name="length">04:19</column>
+        </table>
+        <table name="songs">
+            <column name="id">66</column>
+            <column name="name">Broken Wings</column>
+            <column name="length">05:06</column>
+        </table>
+        <table name="songs">
+            <column name="id">67</column>
+            <column name="name">In Loving Memory</column>
+            <column name="length">05:40</column>
+        </table>
+        <table name="songs">
+            <column name="id">68</column>
+            <column name="name">Down To My Last</column>
+            <column name="length">04:46</column>
+        </table>
+        <table name="songs">
+            <column name="id">69</column>
+            <column name="name">Watch Your Words</column>
+            <column name="length">05:25</column>
+        </table>
+        <table name="songs">
+            <column name="id">70</column>
+            <column name="name">Shed My Skin</column>
+            <column name="length">05:08</column>
+        </table>
+        <table name="songs">
+            <column name="id">71</column>
+            <column name="name">The End Is Here</column>
+            <column name="length">04:57</column>
+        </table>
+        <table name="songs">
+            <column name="id">72</column>
+            <column name="name">Hells Bells</column>
+            <column name="length">05:10</column>
+        </table>
+        <table name="songs">
+            <column name="id">73</column>
+            <column name="name">Shoot To Thrill</column>
+            <column name="length">05:17</column>
+        </table>
+        <table name="songs">
+            <column name="id">74</column>
+            <column name="name">What Do You Do For Money Honey</column>
+            <column name="length">03:33</column>
+        </table>
+        <table name="songs">
+            <column name="id">75</column>
+            <column name="name">Given The Dog A Bone</column>
+            <column name="length">03:30</column>
+        </table>
+        <table name="songs">
+            <column name="id">76</column>
+            <column name="name">Let Me Put My Love Into You</column>
+            <column name="length">04:16</column>
+        </table>
+        <table name="songs">
+            <column name="id">77</column>
+            <column name="name">Back In Black</column>
+            <column name="length">04:14</column>
+        </table>
+        <table name="songs">
+            <column name="id">78</column>
+            <column name="name">You Shook Me All Night Long</column>
+            <column name="length">03:30</column>
+        </table>
+        <table name="songs">
+            <column name="id">79</column>
+            <column name="name">Have A Drink On Me</column>
+            <column name="length">03:57</column>
+        </table>
+        <table name="songs">
+            <column name="id">80</column>
+            <column name="name">Shake A Leg</column>
+            <column name="length">04:06</column>
+        </table>
+        <table name="songs">
+            <column name="id">81</column>
+            <column name="name">Rock And Roll Ain't Noise Pollution</column>
+            <column name="length">04:15</column>
+        </table>
+        <!-- Table users -->
+        <!-- Table users_playlists -->
+    </database>
+</pma_xml_export>
