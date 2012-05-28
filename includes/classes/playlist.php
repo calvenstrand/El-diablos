@@ -5,6 +5,7 @@ class Playlist
 var $activePlistName;
 var $activePlistId;
 var $plistid;
+var $genreid;
 	public function createPlaylist ($userid, $plist) {
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -96,6 +97,10 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 
 public function plistidfix ($id) {
 	$this->plistid = $id;
+}
+
+public function genreidfix ($id) {
+	$this->genreid = $id;
 }
 
 public function showPlaylist($playlistId, $sortMode){
