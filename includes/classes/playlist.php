@@ -103,6 +103,16 @@ public function genreidfix ($id) {
 	$this->genreid = $id;
 }
 
+public function playlistnamefix ($id) {
+	$mysqliprep = new mysqli("localhost", "root", "", "diablofy");
+	$pliststmt = $mysqliprep->prepare("SELECT playlists.name FROM playlists WHERE playlists.id = ?");
+	$pliststmt->bind_param("i", $id);
+	$pliststmt->execute();
+	$pliststmt->bind_result($plistname);
+	$pliststmt->fetch();
+	$this->activePlistName = $plistname;
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -162,6 +172,7 @@ public function showPlaylist($playlistId, $sortMode){
 			WHERE playlists_songs.playlistid = ?
 			
 		  ");
+
 		$stmt->bind_param( "ii", $playlistId, $playlistId); 
 		
 		
@@ -176,42 +187,40 @@ public function showPlaylist($playlistId, $sortMode){
 		<th><a href="?sortMode=artist&plist='.$this->plistid.'">Artist</a></th>
 		<th><a href="?sortMode=album&plist='.$this->plistid.'">Album</a></th>
 		<th><a href="?sortMode=length&plist='.$this->plistid.'">Length</a></th>
-		<th><a href="?sortMode=year&plist='.$this->plistid.'">Year</a></th>
+		<th><a href="?sortMode=year&plist='.$this->plistid.'">Year</a></th>';
+		if ($dunder == 1) {
+		echo '
 		<th>Delete</th>
-		</thead>
+		';
+		}
+		echo '</thead>
 		<tbody>
 		';
-		
+
+		$this->playlistnamefix($playlistId);
 
 		while ($row = $stmt->fetch()) {
-
-$this->activePlistName = $col1;
-$this->activePlistId = $playlistId;
-echo '<tr><td>'
-.$col3
-.'</td><td>'
-.$col2
-.'</td><td>'
-.$col5
-.'</td><td>'
-.$col4
-.'</td><td>'
-.$col6
-.'</td>';
-if($dunder == 1){
-echo '<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'"><img alt="Delete" src="img/cross.png" /></a></td>';
-
-}else{
-	echo '<td></td>';
-}
-
-
-echo '</tr>';
-
-
-
-}
-
+			$this->activePlistName = $col1;
+			$this->activePlistId = $playlistId;
+			echo '<tr><td>'
+			.$col3
+			.'</td><td>'
+			.$col2
+			.'</td><td>'
+			.$col5
+			.'</td><td>'
+			.$col4
+			.'</td><td>'
+			.$col6
+			.'</td>';
+			if($dunder == 1){
+				echo '<td><a href="includes/userActions/deleteSongFromPlaylistAction.php?songid='.$songid.'&playlistid='.$playlistId.'"><img alt="Delete" src="img/cross.png" /></a></td>';
+			}else{
+				echo '<td></td>';
+			}
+			echo '</tr>';
+		}
+		
 }
 
 $_SESSION['lastSort'] = $sortMode;
