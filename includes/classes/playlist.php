@@ -2,10 +2,10 @@
 
 class Playlist
 {
-var $activePlistName;
-var $activePlistId;
-var $plistid;
-var $genreid;
+	var $activePlistName;
+	var $activePlistId;
+	var $plistid;
+	var $genreid;
 	public function createPlaylist ($userid, $plist) {
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -454,7 +454,7 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 		$stmt->bind_result($usersId, $username);
 
 		while($row1 = $stmt->fetch()) {
-			echo '<li value="'.$usersId.'" name="plistID">'.$username.'</li>';
+			echo '<li value="'.$usersId.'" name="plistID">'.$username.' <input type="checkbox" name="option" id="owner" /><a href="#" class="button blue">ADD</a></li>';
 		}
 
 }

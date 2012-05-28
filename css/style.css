@@ -14,9 +14,9 @@ body { margin: 0; font-size: 1em; line-height: 1.4; background:url(../img/wl.jpg
 ::-moz-selection { background: #dc1f1f; color: #fff; text-shadow: none; }
 ::selection { background: #dc1f1f; color: #fff; text-shadow: none; }
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
+a { color: #000; }
+a:visited { color: #000; }
+a:hover { color: #000; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 
@@ -126,6 +126,12 @@ footer {
 	background:url(../img/bg.png);
 	width: 100%;
 	height: 400px;
+}
+
+.aboutimg {
+	margin: 0 auto;
+	width: 480px;
+	padding:20px;
 }
 
 /* ===== NAVIGATION ===== */
@@ -360,7 +366,7 @@ footer {
 	right: 2px;
 }
 
-/* ===== Contact Form ===== */
+/* ===== Contact Forms ===== */
 
 .contact {
 	width: 400px;
@@ -436,7 +442,7 @@ input:focus, textarea:focus {
 
 /* ===== Select ===== */
 
-.size { position:relative }
+.size { float: left; }
 .size .field {
 	background:#fff; 
 	color:#EC6603; 
@@ -472,11 +478,75 @@ input:focus, textarea:focus {
 	border-bottom: solid 1px #ccc;
 }
 .size>ul.list li:hover {
-	background:#EC6603; color:#fff;
+
 }
 .size>ul.list li:last-child { border:none }
 
+/* ===== BLÅA KNAPPEN ===== */
+.button {
+	float:right;
+	font-size: 12px; 
+	text-decoration: none!important; 
+	font-family: Helvetica, Arial, sans serif;
+	padding: 4px 6px; 
+	border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	box-shadow: inset 0px 0px 2px #fff;
+	-o-box-shadow: inset 0px 0px 2px #fff;
+	-webkit-box-shadow: inset 0px 0px 2px #fff;
+	-moz-box-shadow: inset 0px 0px 2px #fff;
+}
 
+.button:active {
+	box-shadow: inset 0px 0px 3px #999;
+	-o-box-shadow: inset 0px 0px 3px #999;
+	-webkit-box-shadow: inset 0px 0px 3px #999;
+	-moz-box-shadow: inset 0px 0px 3px #999;
+}
+
+.blue {
+	color: #41788c;
+	border: 1px solid #6fb1c7;
+	background-image: -moz-linear-gradient(#aae5f7, #73d0f1);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#73d0f1), to(#aae5f7));
+	background-image: -webkit-linear-gradient(#aae5f7, #73d0f1);
+	background-image: -o-linear-gradient(#aae5f7, #73d0f1);
+	text-shadow: 1px 1px 1px #bfeafb;
+	background-color: #73d0f1;
+}
+.blue:hover {
+	border: 1px solid #4690ad;
+	background-image: -moz-linear-gradient(#73d0f1, #aae5f7);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#aae5f7), to(#73d0f1));
+	background-image: -webkit-linear-gradient(#73d0f1, #aae5f7);
+	background-image: -o-linear-gradient(#73d0f1, #aae5f7);
+	background-color: #aae5f7;
+}
+.blue:active {border: 1px solid #3b778b;}
+
+/* ===== MÖRDARKNAPPEN ===== */
+
+.black {
+	color: #fff;
+	border: 1px solid #4d4d4d;
+	background-image: -moz-linear-gradient(#656565, #454545);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#454545), to(#656565));
+	background-image: -webkit-linear-gradient(#656565, #454545);
+	background-image: -o-linear-gradient(#656565, #454545);
+	text-shadow: 1px 1px 1px #6d6d6d;
+	background-color: #454545;
+}
+
+.black:hover {
+	border: 1px solid #363636;
+	background-image: -moz-linear-gradient(#454545, #656565);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#656565), to(#454545));
+	background-image: -webkit-linear-gradient(#454545, #656565);
+	background-image: -o-linear-gradient(#454545, #656565);
+	background-color: #656565;
+}
+
+.black:active {border: 1px solid #000;}
 
 /* =============================================================================
    Media Queries

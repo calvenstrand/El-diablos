@@ -1,11 +1,7 @@
 <footer>
-  <div id="copyright">
 
-	    Copyright &copy; 2012 <a href="index.php">Diablofy</a> - Alla r&auml;ttigheter reserverade. <br/>
-
-        <a href="index.php">Diablofy</a> &auml;gs och drivs utav El-diablos AB - Driftas av <a href="index.php" target="_blank">Diablofy Crew</a>.
-
-	</div>
+    Copyright &copy; 2012 <a href="index.php">Diablofy</a> - Alla r&auml;ttigheter reserverade. <br/>
+    <a href="index.php">Diablofy</a> &auml;gs och drivs utav El-diablos AB - Driftas av <a href="index.php" target="_blank">Diablofy Crew</a>.
  
 </footer>
 

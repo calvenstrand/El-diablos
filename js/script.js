@@ -1,5 +1,5 @@
 /*
- Author: Christoffer Älvenstrand
+ Author: Diablofy Crew
 */
 
 $(window).load(function() {
@@ -57,7 +57,5 @@ $(window).load(function() {
 	$(function(){
 		$('.size').styleddropdown();
 	});
-
-
 
 });
