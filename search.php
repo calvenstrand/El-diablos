@@ -24,10 +24,12 @@
                     <thead>
                         <?php  
                         
-                         echo'<th>Song</a></th>
-                            <th>Artist</a></th>
-                            <th>Album</a></th>
-                            <th>Year</a></th>
+                         echo'<th><a href="?sortMode=song'.$argument.'">Song</a></th>
+                        <th><a href="?sortMode=artist'.$argument.'">Artist</a></th>
+                        <th><a href="?sortMode=album'.$argument.'">Album</a></th>
+                        <th><a href="?sortMode=genre'.$argument.'">Genre</a></th>
+                        <th><a href="?sortMode=length'.$argument.'">Length</a></th>
+                        <th><a href="?sortMode=year'.$argument.'">Year</a></th>
                         ';?>
                         <th>Add</th>
                     </thead>
@@ -37,11 +39,12 @@
 			<?php
 				$mysqli = new mysqli("localhost", "root", "", "diablofy");
 				$stmt = $mysqli->prepare(
-				"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
+				"SELECT artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id, genres.id, genres.name FROM songs
 				LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
 				LEFT JOIN artists ON (artists_songs.artistid=artists.id)
 				LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 				LEFT JOIN albums ON (albums.id=albums_songs.albumid)
+				LEFT JOIN genres ON (genres.id=artists.genreid)
 				WHERE (songs.name LIKE ?) OR (albums.name LIKE ?) OR (artists.name LIKE ?)");
 
 				$nyh = '%'.$_POST['q'].'%';
@@ -50,7 +53,7 @@
 		   
 				$stmt->execute();
 				$stmt->store_result();
-				$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
+				$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid, $genreid, $genrename);
 			   
 				while ($row = $stmt->fetch()) {
 
@@ -63,6 +66,10 @@
 							.$artistname
 							.'</td><td>'
 							.$albumname
+							.'</td><td>'
+							.$genrename
+							.'</td><td>'
+							.$songlength
 							.'</td><td>'
 							.$albumyear
 							.'</td><td>'	
