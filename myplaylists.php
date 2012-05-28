@@ -24,6 +24,7 @@ session_start();
         if(isset($_GET['plist'])){
             $plistChosen = 1;
             $playlistId = $_GET['plist'];
+						$pList->plistidfix($playlistId);
         }else{
             $plistChosen = 0;
         }
@@ -76,34 +77,16 @@ session_start();
             </form>
 
           	<table id="table">
-
-                <thead>
-                    <?php 
-                    echo '<th><a href="?sortMode=song&plist='.$plistChosen.'">Song</a></th>
-                    <th><a href="?sortMode=artist&plist='.$plistChosen.'">Artist</a></th>
-                    <th><a href="?sortMode=album&plist='.$plistChosen.'">Album</a></th>
-                    <th><a href="?sortMode=length&plist='.$plistChosen.'">Length</a></th>
-                    <th><a href="?sortMode=year&plist='.$plistChosen.'">Year</a></th>
-                    <th>Delete</th>';
-                    ?>
-                </thead>
-                <tbody>
-                    <?php
-                    if($plistChosen == 1){
-                    $pList->showPlaylist($playlistId, $sortMode);
-                    }
-                    ?>
-                </tbody>
+							<?php
+              if($plistChosen == 1){
+              	$pList->showPlaylist($playlistId, $sortMode);
+								echo '<p style="color:#ec6603; margin: 5px 0 3px 7px;">Active Playlist: ' . $pList->activePlistName . '</p><input id="plidd" type="hidden" value="'.$pList->activePlistId.'"/> ';
+;
+              }
+							echo '</tbody>';
+              ?>
             </table>  
-
-        <?php
-				if ($pList->activePlistName) {
-					echo 'Active list: ' . $pList->activePlistName.'
-                    <input id="plidd" type="hidden" value="'.$pList->activePlistId.'"/> ';
-				}
-                
-				?>
-                  <div class="size">
+            <div class="size">
             <input id="feest" type="text" name="noobChristoffer" value="Invite a Friend" class="field" readonly="readonly" />
             <input id="chooseplist" type="hidden" name="selecta" value="" class="fest"/>
          <ul id="friendList" class="list">

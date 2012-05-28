@@ -63,11 +63,10 @@ textarea { overflow: auto; vertical-align: top; resize: vertical; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
-table { border-collapse: collapse; border-spacing: 0;}
+table { border-collapse: collapse; border-spacing: 0; width:980px;}
 td { vertical-align: top; }
 
 #table thead {
-	width: 100%;
 	border-bottom: 1px solid #666;
 }
 
@@ -80,14 +79,11 @@ td { vertical-align: top; }
 	padding: 10px;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
+	font-size:14px;
 }
 
 tbody tr:hover {
 	background: #ebebeb;	
-}
-
-tbody tr td:hover {
-	background: #dedede;	
 }
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
@@ -111,6 +107,14 @@ tbody tr td:hover {
 
 header {
 	width:100%;
+}
+
+footer {
+	border-top:2px solid #ccc;
+	padding-top:25px;
+	margin-top:15px;
+	font-size:12px;
+	color:#000;	
 }
 
 .main {

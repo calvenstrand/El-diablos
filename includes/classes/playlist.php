@@ -4,6 +4,7 @@ class Playlist
 {
 var $activePlistName;
 var $activePlistId;
+var $plistid;
 	public function createPlaylist ($userid, $plist) {
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	if ($mysqli->connect_errno) {
@@ -93,6 +94,10 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
 
 }
 
+public function plistidfix ($id) {
+	$this->plistid = $id;
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -160,7 +165,17 @@ public function showPlaylist($playlistId, $sortMode){
 		$stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $songid);
 		// then fetch and close the statement
 
-
+		echo '
+		<thead>
+		<th><a href="?sortMode=song&plist='.$this->plistid.'">Song</a></th>
+		<th><a href="?sortMode=artist&plist='.$this->plistid.'">Artist</a></th>
+		<th><a href="?sortMode=album&plist='.$this->plistid.'">Album</a></th>
+		<th><a href="?sortMode=length&plist='.$this->plistid.'">Length</a></th>
+		<th><a href="?sortMode=year&plist='.$this->plistid.'">Year</a></th>
+		<th>Delete</th>
+		</thead>
+		<tbody>
+		';
 		
 
 		while ($row = $stmt->fetch()) {
