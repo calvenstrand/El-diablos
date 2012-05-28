@@ -160,7 +160,17 @@ public function showPlaylist($playlistId, $sortMode){
 		$stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $songid);
 		// then fetch and close the statement
 
-
+		echo '
+		<thead>
+		<th><a href="?sortMode=song&plist='.$plistChosen.'">Song</a></th>
+		<th><a href="?sortMode=artist&plist='.$plistChosen.'">Artist</a></th>
+		<th><a href="?sortMode=album&plist='.$plistChosen.'">Album</a></th>
+		<th><a href="?sortMode=length&plist='.$plistChosen.'">Length</a></th>
+		<th><a href="?sortMode=year&plist='.$plistChosen.'">Year</a></th>
+		<th>Delete</th>
+		</thead>
+		<tbody>
+		';
 		
 
 		while ($row = $stmt->fetch()) {
