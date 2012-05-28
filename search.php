@@ -43,12 +43,13 @@
 				LEFT JOIN albums_songs ON (songs.id = albums_songs.songid)
 				LEFT JOIN albums ON (albums.id=albums_songs.albumid)
 				WHERE (songs.name LIKE ?) OR (albums.name LIKE ?) OR (artists.name LIKE ?)");
-				
-				$stmt->bind_param( "sss", $nyh, $nyh, $nyh); 
+
 				$nyh = '%'.$_POST['q'].'%';
+				$stmt->bind_param( "sss", $nyh, $nyh, $nyh); 
+
 		   
 				$stmt->execute();
-	
+				$stmt->store_result();
 				$stmt->bind_result($artistname, $songname, $songlength, $albumname, $albumyear, $songid);
 			   
 				while ($row = $stmt->fetch()) {
@@ -77,13 +78,16 @@
 						.'</td>'
 						.'</tr>';
 						}
-                        ?>
+
+						
+						?>
                     </tbody>
             	</table>
-            <?php  if($stmt->num_rows == 0) {
-						echo 'We couldnt find what you were looking for';
-					}
-			
+            <?php
+							if($stmt->num_rows == 0) {
+							echo 'We couldnt find what you were looking for';
+						}
+		
 			?>
 
 			
