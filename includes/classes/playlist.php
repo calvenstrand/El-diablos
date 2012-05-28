@@ -340,12 +340,15 @@ public function showAllSongs($sortMode){
 	.'</td><td>'
 	.'<a href="?artist='.$artistname.'&album='.$albumname.'&genreid='.$genreid.'">'.$albumname.'</a>'
 	.'</td><td>'
+	.$genre
+	.'</td><td>'
 	.$songlength
 	.'</td><td>'
 	.$albumyear
 	.'</td>'
-	.'<td>'
-	.'<div class="size">
+	.'<td>';
+	if(isset($_SESSION['userid'])){
+	echo '<div class="size">
             <input type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly="readonly" />
             <input type="hidden" name="select" value="" class="fest"/>
             <input type="hidden" name="id" value="'.$songid.'" class="finid"/>
@@ -354,8 +357,8 @@ public function showAllSongs($sortMode){
             $this->addablePlaylists();
             echo'
             </ul>
-            </div>'
-	.'</td>'
+            </div>';}
+	echo '</td>'
 	.'</tr>';
 //<a href="includes/userActions/addSongToPlaylistAction.php?songid='.$songid.'">Add to Plist</a>
 

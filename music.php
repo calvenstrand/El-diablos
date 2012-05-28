@@ -49,10 +49,15 @@
                      echo'<th><a href="?sortMode=song'.$argument.'">Song</a></th>
                         <th><a href="?sortMode=artist'.$argument.'">Artist</a></th>
                         <th><a href="?sortMode=album'.$argument.'">Album</a></th>
+                        <th><a href="?sortMode=genre'.$argument.'">Genre</a></th>
                         <th><a href="?sortMode=length'.$argument.'">Length</a></th>
                         <th><a href="?sortMode=year'.$argument.'">Year</a></th>
                     ';?>
-                    <th>Add</th>
+                    <th>
+                        <?php if (isset($_SESSION['userid'])){
+                            echo 'Add';
+                        } ?>
+                        </th>
                 </thead>
                 <tbody>
                     <?php
