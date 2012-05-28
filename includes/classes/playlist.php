@@ -347,7 +347,7 @@ public function showAllSongs($sortMode){
 			$stmt1->bind_param("i", $_GET['genreid']);
 			$stmt1->execute();
 			$stmt1->bind_result($theartistname, $thegenreid, $thealbumname);
-			echo 'Similar artists: ';
+			//echo 'Similar artists: ';
 			$arr = array();
 			while ($row = $stmt1->fetch()) {
 				if ($thealbumname == $_GET['album']) {} else {
