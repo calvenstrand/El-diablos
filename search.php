@@ -80,7 +80,9 @@
                         ?>
                     </tbody>
             	</table>
-            <?php  if($stmt->num_rows == 0) {
+            <?php  
+            	
+            if($stmt->num_rows == 0) {
 						echo 'We couldnt find what you were looking for';
 					}
 			
