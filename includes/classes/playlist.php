@@ -322,8 +322,9 @@ public function showAllSongs($sortMode){
 		}else if(isset($_GET['search'])){
 			//Searchgrej
 			//$_SESSION['selected'] = 'album='.$_GET['album'];
+			if(isset($_POST['q'])){
 			$searchQuote = '%'.$_POST['q'].'%';
-			
+			}
 			$stmt = $mysqli->prepare(
 			"SELECT artists.genreid AS genreid, genres.name, artists.name AS artist, songs.name AS song, songs.length AS length,albums.name AS album, albums.year AS year, songs.id FROM songs
 			LEFT JOIN artists_songs ON (artists_songs.songid=songs.id)
@@ -334,7 +335,7 @@ public function showAllSongs($sortMode){
 			WHERE (songs.name LIKE ?) OR (albums.name LIKE ?) OR (artists.name LIKE ?)
 			ORDER BY $sortMode $way
 			");
-		 	$stmt->bind_param( "sss", $searchQuote, $_searchQuote, $searchQuote);
+		 	$stmt->bind_param( "sss", $searchQuote, $searchQuote, $searchQuote);
 			
 			$stmt1 = $mysqli->prepare(
 			"SELECT artists.name, genres.id, albums.name FROM artists
