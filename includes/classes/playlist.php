@@ -198,8 +198,9 @@ public function showPlaylist($playlistId, $sortMode){
 		';
 
 		$this->playlistnamefix($playlistId);
-
+		$fetched = false;
 		while ($row = $stmt->fetch()) {
+			$fetched = true;
 			$this->activePlistName = $col1;
 			$this->activePlistId = $playlistId;
 			echo '<tr><td>'
@@ -219,6 +220,18 @@ public function showPlaylist($playlistId, $sortMode){
 				echo '<td></td>';
 			}
 			echo '</tr>';
+		}
+		if ($fetched == false) {
+			echo '
+			<tr>
+				<td>No</td>
+				<td>songs</td>
+				<td>in</td>
+				<td>this</td>
+				<td>playlist</td>
+				<td>!</td>
+			</tr>
+			';
 		}
 		
 }
