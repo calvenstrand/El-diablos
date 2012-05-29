@@ -445,8 +445,7 @@ input:focus, textarea:focus {
 
 .size { float: left; }
 .size .field {
-	background:#fff; 
-	color:#EC6603; 
+	color:#0095ca; 
 	padding:5px; 
 	border:none; 
 	cursor:pointer;
@@ -479,14 +478,13 @@ input:focus, textarea:focus {
 	border-bottom: solid 1px #ccc;
 }
 .size>ul.list li:hover {
-
+	color:#0095ca; 
 }
 .size>ul.list li:last-child { border:none }
 
 /*Invite a friend css*/
 .size .fieldShare {
-	background:#fff; 
-	color:#EC6603; 
+	color:#0095ca; 
 	padding:5px; 
 	border:none; 
 	cursor:pointer;

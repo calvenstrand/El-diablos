@@ -27,6 +27,7 @@ session_start();
                         <img src="img/bild3.jpg" />
                         <img src="img/bild4.jpg" />
                         <img src="img/bild5.jpg" />
+                        <img src="img/bild6.jpg" />
                     </div>
             </div>
         

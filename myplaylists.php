@@ -50,7 +50,7 @@ session_start();
 
             <form id="chooseplist" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 						
-						<div class="size">
+			<div class="size">
                 <input id="lolboll" type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly />
                 <input id="chooseplist" type="hidden" name="select" value="" class="fest"/>
                 <ul id="list" class="list">
@@ -87,7 +87,7 @@ session_start();
 				<?php
                     if($plistChosen == 1){
                         $pList->showPlaylist($playlistId, $sortMode);
-                        echo '<p style="color:#ec6603; margin: 5px 0 3px 7px;">Active Playlist: ' . $pList->activePlistName . '</p><input id="plidd" type="hidden" value="'.$pList->activePlistId.'"/> ';
+                        echo '<p style="color:#0095ca; margin: 25px 0px 0px 0px;">Active Playlist: ' . $pList->activePlistName . '</p><input id="plidd" type="hidden" value="'.$pList->activePlistId.'"/> ';
                     }
                     echo '</tbody>';
                 ?>
