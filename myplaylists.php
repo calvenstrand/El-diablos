@@ -61,8 +61,9 @@ session_start();
             </form>
 
 						<?php
-						$pList->playlistnamefix($playlistId);
-						if (isset($pList->activePlistName)) {
+						$checker = $pList->plistownercheck($playlistId, $_SESSION['userid']);
+						if (isset($checker)) {
+							if ($checker == 1) {
 						?>
 
 
@@ -75,6 +76,7 @@ session_start();
             </div>
             
 						<?php
+							}
 						}
 						?>
 

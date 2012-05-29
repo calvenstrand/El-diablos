@@ -113,6 +113,21 @@ public function playlistnamefix ($id) {
 	$this->activePlistName = $plistname;
 }
 
+public function plistownercheck ($plid, $userid) {
+	$mysqlipre = new mysqli("localhost", "root", "", "diablofy");
+	$pstmt = $mysqlipre->prepare("
+	SELECT users_playlists.owner FROM users_playlists
+	WHERE users_playlists.userid=? 
+	AND users_playlists.playlistid=?
+	AND users_playlists.owner=1
+	");
+	$pstmt->bind_param("ii", $userid, $plid); 
+	$pstmt->execute();
+	$pstmt->bind_result($owner);
+	$pstmt->fetch();
+	return $owner;
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
