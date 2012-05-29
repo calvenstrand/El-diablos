@@ -14,10 +14,7 @@ $(function () {
 
 
 
-$('#friendList').click(function(event) {
-	console.log('tjo');
-  event.preventDefault();
-});
+
 
 
 
@@ -25,10 +22,12 @@ $('#friendList').click(function(event) {
 var owner;
 	var listsa = $('ul#friendList').find('li #blueButton');
 	listsa.live('click', function () {
-		var finast = $('#plidd').val();
+		var finast = $(this).parent('li').attr('value');
 		var festa = $(this).parent('li').children('span').text();
+		var playId = $('#plidd').attr('value');
 		//attr('value')
-		//console.log(festa);
+		console.log(festa);
+		console.log(finast);
 		//console.log('skickat');
 		console.log($('#owner').attr('checked'));
 		if($('#owner').attr('checked') == 'checked'){
@@ -36,7 +35,7 @@ var owner;
 		}else{
 			owner = 0;
 		}
-	$.post('includes/userActions/inviteFriendToPlaylistAction.php?userid='+festa+'&plid='+finast+'&owner='+owner, function(data) {
+	$.post('includes/userActions/inviteFriendToPlaylistAction.php?userid='+finast+'&plid='+playId+'&owner='+owner, function(data) {
         			
 			//console.log('skickat');
 				});
@@ -77,7 +76,7 @@ var owner;
 						'color':'#333'
 					});
 
-				//obj.find('.listShare').fadeOut(400);
+				obj.find('.listShare').fadeOut(400);
 				});
 			});
 		};
