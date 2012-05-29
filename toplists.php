@@ -52,6 +52,39 @@ session_start();
 							<td>Baha Men</td>
 						</tr>
 					</table>
+
+					<h2 style="text-align:center">Christoffers top5</h2>
+					<table border="5" style="text-align: center">
+						<tr>
+							<th>Rank</th>
+							<th>Song</th>
+							<th>Artist</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Sean Den Förste Banan</td>
+							<td>Sean Banan</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Sean Den Förste Banan</td>
+							<td>Sean Banan</td>
+						<tr>
+							<td>3</td>
+							<td>Sean Den Förste Banan</td>
+							<td>Sean Banan</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Sean Den Förste Banan</td>
+							<td>Sean Banan</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Sean Den Förste Banan</td>
+							<td>Sean Banan</td>
+						</tr>
+					</table>
         </div>
     
         <?php
