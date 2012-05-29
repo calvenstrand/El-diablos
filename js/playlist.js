@@ -21,12 +21,37 @@ $('#friendList').click(function(event) {
 
 
 
+
+var owner;
+	var listsa = $('ul#friendList').find('li #blueButton');
+	listsa.live('click', function () {
+		var finast = $('#plidd').val();
+		var fest = $(this).parent('li').children('span').text();
+		//attr('value')
+		console.log(fest);
+		console.log('skickat');
+		console.log($('#owner').attr('checked'));
+		if($('#owner').attr('checked') == 'checked'){
+			owner = 1;
+		}else{
+			owner = 0;
+		}
+	$.post('includes/userActions/inviteFriendToPlaylistAction.php?userid='+fest+'&plid='+finast+'&owner='+owner, function(data) {
+        			
+			console.log('skickat');
+				});
+	
+	});
+
+
+
 (function($){
 		$.fn.styleddropdown = function(){
 			return this.each(function(){
 				var obj = $(this)
 				obj.find('.fieldShare').click(function() { //onclick event, 'list' fadein
 				obj.find('.listShare').fadeIn(400);
+
 	
 				$(document).keyup(function(event) { //keypress event, fadeout on 'escape'
 					if(event.keyCode == 27) {
@@ -45,7 +70,7 @@ $('#friendList').click(function(event) {
 				obj.find('.fest').attr('value', fest);
 				
 				obj.find('.fieldShare')
-					.val('added: '+$(this).html())
+					.val('added: '+$(this).children('ul li span').html())
 					.css({
 						'background':'#fff',
 						'color':'#333'
@@ -69,23 +94,6 @@ $('#friendList').click(function(event) {
 
 
 
-	var owner;
-	var listsa = $('ul#friendList').find('li');
-	listsa.live('click', function () {
-		var finast = $('#plidd').val();
-		var fest = $(this).attr('value');
-		console.log('skickat');
-		console.log($('#owner').attr('checked'));
-		if($('#owner').attr('checked') == 'checked'){
-			owner = 1;
-		}else{
-			owner = 0;
-		}
-	$.post('includes/userActions/inviteFriendToPlaylistAction.php?userid='+fest+'&plid='+finast+'&owner='+owner, function(data) {
-        			
-			console.log('skickat');
-				});
 	
-	});
 
 });
