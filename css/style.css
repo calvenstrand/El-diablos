@@ -566,27 +566,44 @@ input:focus, textarea:focus {
 
 /* ===== MÖRDARKNAPPEN ===== */
 
-.black {
+#buttonOfDeath {
+	font-size: 12px; 
+	text-decoration: none!important; 
+	font-family: Helvetica, Arial, sans serif;
+	padding: 10px 16px; 
+	border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	box-shadow: inset 0px 0px 2px #fff;
+	-o-box-shadow: inset 0px 0px 2px #fff;
+	-webkit-box-shadow: inset 0px 0px 2px #fff;
+	-moz-box-shadow: inset 0px 0px 2px #fff;
 	color: #fff;
 	border: 1px solid #4d4d4d;
-	background-image: -moz-linear-gradient(#656565, #454545);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#454545), to(#656565));
-	background-image: -webkit-linear-gradient(#656565, #454545);
-	background-image: -o-linear-gradient(#656565, #454545);
+	background-image: -moz-linear-gradient(#900b0b, #d71818);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#900b0b), to(#d71818));
+	background-image: -webkit-linear-gradient(#900b0b, #d71818);
+	background-image: -o-linear-gradient((#900b0b, #d71818);
 	text-shadow: 1px 1px 1px #6d6d6d;
 	background-color: #454545;
 }
 
-.black:hover {
+#buttonOfDeath:hover {
 	border: 1px solid #363636;
-	background-image: -moz-linear-gradient(#454545, #656565);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#656565), to(#454545));
-	background-image: -webkit-linear-gradient(#454545, #656565);
-	background-image: -o-linear-gradient(#454545, #656565);
+	background-image: -moz-linear-gradient(#d71818, #900b0b);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#656565), to(#900b0b));
+	background-image: -webkit-linear-gradient(#d71818, #900b0b);
+	background-image: -o-linear-gradient(#d71818, #900b0b);
 	background-color: #656565;
 }
 
-.black:active {border: 1px solid #000;}
+#buttonOfDeath:active {
+	.button:active {
+	box-shadow: inset 0px 0px 3px #999;
+	-o-box-shadow: inset 0px 0px 3px #999;
+	-webkit-box-shadow: inset 0px 0px 3px #999;
+	-moz-box-shadow: inset 0px 0px 3px #999;
+	border: 1px solid #000;
+}
 
 /* =============================================================================
    Media Queries
