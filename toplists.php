@@ -19,8 +19,39 @@ session_start();
         ?>
     
         <div class="main" role="main">
-            <h2 style="text-align:center">Comming soon</h2>
-        
+        	<h2 style="text-align:center">Rasmus top5</h2>
+					<table border="5" style="text-align: center">
+						<tr>
+							<th>Rank</th>
+							<th>Song</th>
+							<th>Artist</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Rosa Helikopter</td>
+							<td>Peaches</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Barbie Girl</td>
+							<td>Aqua</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Friday</td>
+							<td>Rebecka Black</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Boom Boom Boom</td>
+							<td>Vengaboys</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Who Let The Dogs Out?</td>
+							<td>Baha Men</td>
+						</tr>
+					</table>
         </div>
     
         <?php
