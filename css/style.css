@@ -120,6 +120,7 @@ footer {
 .main {
 	margin-top: 10px;
 	width: 100%;
+	min-height:500px;
 }
 
 .main-child {
@@ -567,9 +568,8 @@ input:focus, textarea:focus {
 /* ===== MÖRDARKNAPPEN ===== */
 
 #buttonOfDeath {
-	font-size: 12px; 
-	text-decoration: none!important; 
-	font-family: Helvetica, Arial, sans serif;
+	width:980px;
+	height:60px;
 	padding: 10px 16px; 
 	border-radius: 3px; 
 	-moz-border-radius: 3px; 
