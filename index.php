@@ -24,9 +24,9 @@ session_start();
                     <div id="slider" class="nivoSlider">
                         <img src="img/bild1.jpg" />
                         <img src="img/bild2.jpg" />
-												<img src="img/bild3.jpg" />
-												<img src="img/bild4.jpg" />
-												<img src="img/bild5.jpg" />
+                        <img src="img/bild3.jpg" />
+                        <img src="img/bild4.jpg" />
+                        <img src="img/bild5.jpg" />
                     </div>
             </div>
         
@@ -35,10 +35,10 @@ session_start();
 
                     if(isset($_GET['loggedin'])){
                         if($_GET['loggedin'] == 'true'){
-                        echo 'Thank you for logging in!';
-                    }else if ($_GET['loggedin'] == 'false'){
-                        echo 'Something went wrong, did you mistype? NOT LOGGED IN';
-                    }
+                        	echo 'Thank you for logging in!';
+                    	}else if ($_GET['loggedin'] == 'false'){
+                        	echo 'Something went wrong, did you mistype? NOT LOGGED IN';
+                    	}
                     }
                  ?>
           </div>
