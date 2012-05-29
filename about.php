@@ -28,7 +28,7 @@ session_start();
             </div>
             
             <button id="buttonOfDeath">
-            Button of Death
+            Press me
             </button>
         </div>
     
