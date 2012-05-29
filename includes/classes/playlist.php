@@ -483,8 +483,6 @@ public function showAllSongs($sortMode){
 
 
 public function showUsers(){
-	echo 'Active: ' . $this->activePlistName;
-
 	$actualid = $_SESSION['userid'];
 	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users
