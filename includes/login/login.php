@@ -3,6 +3,7 @@ function cleaner ($s) {
 	if (get_magic_quotes_gpc()) {
 		$s = stripslashes($s);
 	}
+	
 	if (phpversion() >= '4.3.0') {
 		$s = mysql_real_escape_string($s);
 	} else {
@@ -10,6 +11,7 @@ function cleaner ($s) {
 	}
 	return $s;
 }
+
 $mysqli = new mysqli('localhost', 'root', '', 'diablofy');
 if ($mysqli->connect_errno) {
 	echo 'Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
@@ -20,6 +22,7 @@ if ($mysqli->connect_errno) {
 		SELECT username, password, id FROM users
 		WHERE username = ? AND password = ?
 	');
+	
 	$stmt->bind_param('ss', $username, $password);
 	echo 'username: ' . $username . '<br/>';
 	echo 'password: ' . $password . '<br/>';

@@ -14,35 +14,36 @@
         }else{
             $_SESSION['selected'] = '';
             $sortMode = 'artist';
-
         }
 
         if(isset($_GET['album'])){
-            $_SESSION['selected'] = 'album='.$_GET['album'];}
-            if(isset($_GET['artist'])){
-            $_SESSION['selected'] = 'artist='.$_GET['artist'];}
+            $_SESSION['selected'] = 'album='.$_GET['album'];
+		}
+		
+        if(isset($_GET['artist'])){
+            $_SESSION['selected'] = 'artist='.$_GET['artist'];
+		}
 
 
         if(isset($_SESSION['selected'])){
             $argument = '&'.$_SESSION['selected'];
-        }else{
-            
+        }else{ 
             $argument = '';
         }
 
         if(isset($_GET['search'])){
             if(isset($_POST['q'])){
-             $_GET['search'] = $_POST['q'];   
+            	$_GET['search'] = $_POST['q'];   
             }
-            
             $arg2 = '&search='.$_GET['search'];
+			
         }else{
             $arg2='';
         }
 
-				if (isset($_GET['genreid'])) {
-					$pList->genreidfix($_GET['genreid']);
-				}
+		if (isset($_GET['genreid'])) {
+			$pList->genreidfix($_GET['genreid']);
+		}
 
 	?>
 </head>
