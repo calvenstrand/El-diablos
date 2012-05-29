@@ -34,25 +34,26 @@ session_start();
 						}
 					
 					?>
-						<input type="text" name="username" id="name" required="required" />
+						<input type="text" name="username" id="name" required />
 					</div>
 					<div class="cont">
 						<label for="email">Email</label>
-						<input type="email" name="email" id="email" required="required" />
+						<input type="email" name="email" id="email" required />
 					</div>
 					<div class="cont">
 						<label for="password">Password</label>
-						<input type="password" name="password" id="password" required="required" />
+						<input type="password" name="password" id="password" required />
 					</div>
 					<div class="submit">
 						<input type="submit" value="Skicka" />
 			 		</div>
 				</form>
 			</div>        
-	  </div>    
-  </div>
+		</div>    
+	
 	<?php
   include_once ('includes/footer.php');
   ?>
+  </div>
 </body>
 </html>
