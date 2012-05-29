@@ -11,7 +11,7 @@ $(function () {
 	lists.live('click', function () {
 		setTimeout(function () {
 			$('form#chooseplist').submit();
-		}, 200);
+		}, 500);
 	});
 
 
