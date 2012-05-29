@@ -29,10 +29,10 @@ if ($mysqli->connect_errno) {
 			session_start();
 			$_SESSION['username'] = $username;
 			$_SESSION['userid'] = $col3;
-			header('Location: ../../index.php');
+			header('Location: ../../index.php?loggedin=true');
 			exit;
 		} else {
-			header('Location: ../../index.php');
+			header('Location: ../../index.php?loggedin=false');
 			exit;
 		}
 	} else {

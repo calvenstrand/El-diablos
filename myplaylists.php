@@ -61,9 +61,9 @@ session_start();
             </form>
             
             <div class="size">
-                <input id="feest" type="text" name="noobChristoffer" value="Invite a Friend" class="field" readonly />
-                <input id="chooseplist" type="hidden" name="selecta" value="" class="fest"/>
-                <ul id="friendList" class="list">
+                <input id="feest" type="text" name="noobChristoffer" value="Invite a Friend" class="fieldShare" readonly />
+                <input id="chooseFriend" type="hidden" name="selecta" value="" class="fest"/>
+                <ul id="friendList" class="listShare">
                     <?php $pList->showUsers(); ?>
                 </ul>
             </div>
@@ -89,7 +89,7 @@ session_start();
         ?>
 
 	</div>
-	<script type="text/javascript" src="js/playlist.js"></script>=
+	<script type="text/javascript" src="js/playlist.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 
 </body>

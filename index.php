@@ -31,6 +31,16 @@ session_start();
             </div>
         
         	<div class="main-child">
+                <?php 
+
+                    if(isset($_GET['loggedin'])){
+                        if($_GET['loggedin'] == 'true'){
+                        echo 'Thank you for logging in!';
+                    }else if ($_GET['loggedin'] == 'false'){
+                        echo 'Something went wrong, did you mistype? NOT LOGGED IN';
+                    }
+                    }
+                 ?>
           </div>
         
         </div>

@@ -482,6 +482,46 @@ input:focus, textarea:focus {
 }
 .size>ul.list li:last-child { border:none }
 
+/*Invite a friend css*/
+.size .fieldShare {
+	background:#fff; 
+	color:#EC6603; 
+	padding:5px; 
+	border:none; 
+	cursor:pointer;
+	font-family:'lucida sans unicode',sans-serif; font-size:1em;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.size .fieldShare:hover {
+
+}
+.size>ul.listShare { 
+	display:none;
+	position:absolute; 
+	z-index:999;
+	width:300px;
+	margin:0; 
+	padding:10px; 
+	list-style:none;
+	background:#fff; 
+	color:#333;
+	-moz-border-radius:5px; 
+	-webkit-border-radius:5px; 
+	border-radius:5px;
+	-moz-box-shadow:0 0 5px #999; 
+	-webkit-box-shadow:0 0 5px #999; 
+	box-shadow:0 0 5px #999
+}
+.size>ul.listShare li {
+	padding:10px;
+	border-bottom: solid 1px #ccc;
+}
+.size>ul.listShare li:hover {
+
+}
+.size>ul.listShare li:last-child { border:none }
+
 /* ===== BLÅA KNAPPEN ===== */
 .button {
 	float:right;
