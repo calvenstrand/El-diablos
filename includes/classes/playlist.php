@@ -490,7 +490,7 @@ public function showUsers(){
 		$stmt->execute();
 		$stmt->bind_result($usersId, $username);
 			while($row1 = $stmt->fetch()) {
-			echo '<li value="'.$usersId.'" name="plistID"><span>'.$username.'</span> <input type="checkbox" name="option" id="owner" /><a href="#" id="blueButton" class="button blue">ADD</a></li>';
+			echo '<li value="'.$usersId.'" name="plistID"><span>'.$username.'</span> <input type="checkbox" name="option" id="owner" /><- owner?<a href="#" id="blueButton" class="button blue">ADD</a></li>';
 		}
 
 }
