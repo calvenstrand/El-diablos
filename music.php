@@ -98,7 +98,6 @@
         <?php
             include_once ('includes/footer.php');
         ?>
-        <script type="text/javascript" src="js/scriptMusic.js"></script>
 	</div>
 </body>
 </html>
