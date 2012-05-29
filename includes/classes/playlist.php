@@ -113,6 +113,21 @@ public function playlistnamefix ($id) {
 	$this->activePlistName = $plistname;
 }
 
+public function plistownercheck ($plid, $userid) {
+	$mysqlipre = new mysqli("localhost", "root", "", "diablofy");
+	$pstmt = $mysqlipre->prepare("
+	SELECT users_playlists.owner FROM users_playlists
+	WHERE users_playlists.userid=? 
+	AND users_playlists.playlistid=?
+	AND users_playlists.owner=1
+	");
+	$pstmt->bind_param("ii", $userid, $plid); 
+	$pstmt->execute();
+	$pstmt->bind_result($owner);
+	$pstmt->fetch();
+	return $owner;
+}
+
 public function showPlaylist($playlistId, $sortMode){
 
 		$mysqli = new mysqli("localhost", "root", "", "diablofy");
@@ -469,13 +484,12 @@ public function showAllSongs($sortMode){
 
 public function showUsers(){
 	$actualid = $_SESSION['userid'];
-$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users
 		WHERE (users.id != '$actualid')");
 		$stmt->execute();
 		$stmt->bind_result($usersId, $username);
-
-		while($row1 = $stmt->fetch()) {
+			while($row1 = $stmt->fetch()) {
 			echo '<li value="'.$usersId.'" name="plistID"><span>'.$username.'</span> <input type="checkbox" name="option" id="owner" /><a href="#" id="blueButton" class="button blue">ADD</a></li>';
 		}
 

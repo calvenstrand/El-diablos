@@ -49,8 +49,8 @@ session_start();
             </div>
 
             <form id="chooseplist" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-
-            <div class="size">
+						
+						<div class="size">
                 <input id="lolboll" type="text" name="noobChristoffer" value="Choose a Playlist" class="field" readonly />
                 <input id="chooseplist" type="hidden" name="select" value="" class="fest"/>
                 <ul id="list" class="list">
@@ -59,7 +59,16 @@ session_start();
             </div>
 
             </form>
-            
+
+						<?php
+						if (isset($playlistId)) {
+							$checker = $pList->plistownercheck($playlistId, $_SESSION['userid']);
+						}
+						if (isset($checker)) {
+							if ($checker == 1) {
+						?>
+
+
             <div class="size">
                 <input id="feest" type="text" name="noobChristoffer" value="Invite a Friend" class="fieldShare" readonly />
                 <input id="chooseFriend" type="hidden" name="selecta" value="" class="fest"/>
@@ -68,6 +77,12 @@ session_start();
                 </ul>
             </div>
             
+						<?php
+							}
+						}
+						?>
+
+
             <table id="table">
 				<?php
                     if($plistChosen == 1){
