@@ -9,7 +9,9 @@ $(function () {
 
 	var lists = $('ul#list').find('li');
 	lists.live('click', function () {
-		$('form#chooseplist').submit();
+		setTimeout(function () {
+			$('form#chooseplist').submit();
+		}, 100);
 	});
 
 
