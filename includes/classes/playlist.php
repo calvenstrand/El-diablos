@@ -468,14 +468,15 @@ public function showAllSongs($sortMode){
 
 
 public function showUsers(){
+	echo 'Active: ' . $this->activePlistName;
+
 	$actualid = $_SESSION['userid'];
-$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$mysqli = new mysqli("localhost", "root", "", "diablofy");
 	$stmt = $mysqli->prepare("SELECT users.id, users.username FROM users
 		WHERE (users.id != '$actualid')");
 		$stmt->execute();
 		$stmt->bind_result($usersId, $username);
-
-		while($row1 = $stmt->fetch()) {
+			while($row1 = $stmt->fetch()) {
 			echo '<li value="'.$usersId.'" name="plistID"><span>'.$username.'</span> <input type="checkbox" name="option" id="owner" /><a href="#" id="blueButton" class="button blue">ADD</a></li>';
 		}
 
