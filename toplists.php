@@ -28,28 +28,28 @@ session_start();
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>Rosa Helikopter</td>
-							<td>Peaches</td>
+							<td><a href="http://www.youtube.com/watch?v=v26eXtuatCE" target="_blank">Rosa Helikopter</a></td>
+							<td><a href="http://www.youtube.com/watch?v=v26eXtuatCE" target="_blank">Peaches</a></td>
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>Barbie Girl</td>
-							<td>Aqua</td>
+							<td><a href="http://www.youtube.com/watch?v=ZyhrYis509A&ob=av2e" target="_blank">Barbie Girl</a></td>
+							<td><a href="http://www.youtube.com/watch?v=ZyhrYis509A&ob=av2e" target="_blank">Aqua</a></td>
 						</tr>
 						<tr>
 							<td>3</td>
-							<td>Friday</td>
-							<td>Rebecka Black</td>
+							<td><a href="http://www.youtube.com/watch?v=kfVsfOSbJY0" target="_blank">Friday</a></td>
+							<td><a href="http://www.youtube.com/watch?v=kfVsfOSbJY0" target="_blank">Rebecka Black</a></td>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td>Boom Boom Boom</td>
-							<td>Vengaboys</td>
+							<td><a href="http://www.youtube.com/watch?v=llyiQ4I-mcQ&ob=av3e" target="_blank">Boom Boom Boom</a></td>
+							<td><a href="http://www.youtube.com/watch?v=llyiQ4I-mcQ&ob=av3e" target="_blank">Vengaboys</a></td>
 						</tr>
 						<tr>
 							<td>5</td>
-							<td>Who Let The Dogs Out?</td>
-							<td>Baha Men</td>
+							<td><a href="http://www.youtube.com/watch?v=He82NBjJqf8" target="_blank">Who Let The Dogs Out?</a></td>
+							<td><a href="http://www.youtube.com/watch?v=He82NBjJqf8" target="_blank">Baha Men</a></td>
 						</tr>
 					</table>
 
@@ -62,27 +62,27 @@ session_start();
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>Sean Den Förste Banan</td>
-							<td>Sean Banan</td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Den Förste Banan</a></td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Banan</a></td>
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>Sean Den Förste Banan</td>
-							<td>Sean Banan</td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Den Förste Banan</a></td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Banan</a></td>
 						<tr>
 							<td>3</td>
-							<td>Sean Den Förste Banan</td>
-							<td>Sean Banan</td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Den Förste Banan</a></td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Banan</a></td>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td>Sean Den Förste Banan</td>
-							<td>Sean Banan</td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Den Förste Banan</a></td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Banan</a></td>
 						</tr>
 						<tr>
 							<td>5</td>
-							<td>Sean Den Förste Banan</td>
-							<td>Sean Banan</td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Den Förste Banan</a></td>
+							<td><a href="http://www.youtube.com/watch?v=G-hkZ150XtE" target="_blank">Sean Banan</a></td>
 						</tr>
 					</table>
 
@@ -100,23 +100,23 @@ session_start();
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>Dansa din djävul</td>
-							<td>Tomas Di leva</td>
+							<td><a href="http://www.youtube.com/watch?v=1LHqd64nBH8" target="_blank">Dansa din djävul</a></td>
+							<td><a href="http://www.youtube.com/watch?v=1LHqd64nBH8" target="_blank">Tomas Di leva</a></td>
 						</tr>
 						<tr>
 							<td>3</td>
-							<td>Shake that ass bitch</td>
-							<td>?</td>
+							<td><a href="http://www.youtube.com/watch?v=NkRyWpgmV3Y" target="_blank">Shake that ass bitch</a></td>
+							<td><a href="http://www.youtube.com/watch?v=NkRyWpgmV3Y" target="_blank">Booty Bass</a></td>
 						</tr>
 						<tr>
 							<td>4</td>
-							<td>Boten Anna</td>
-							<td>Basshunter</td>
+							<td><a href="http://www.youtube.com/watch?v=zf2wbRWb9xI&ob=av3e" target="_blank">Boten Anna</a></td>
+							<td><a href="http://www.youtube.com/watch?v=zf2wbRWb9xI&ob=av3e" target="_blank">Basshunter</a></td>
 						</tr>
 						<tr>
 							<td>5</td>
-							<td>Paparazzi</td>
-							<td>Lady GaGa</td>
+							<td><a href="http://www.youtube.com/watch?v=QgKrzdaDQMw&ob=av2n" target="_blank">Paparazzi</a></td>
+							<td><a href="http://www.youtube.com/watch?v=QgKrzdaDQMw&ob=av2n" target="_blank">Lady GaGa</a></td>
 						</tr>
 					</table>
         </div>
