@@ -95,8 +95,8 @@ session_start();
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>Jag blöder!</td>
-							<td>Eric E</td>
+							<td><a href="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-prn1/22362_260202244781_604514781_4556415_8245788_n.jpg">Jag blöder!</a></td>
+							<td><a href="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-prn1/22362_260202244781_604514781_4556415_8245788_n.jpg">Eric E</a></td>
 						</tr>
 						<tr>
 							<td>2</td>

@@ -32,16 +32,28 @@ session_start();
             </div>
         
         	<div class="main-child">
-                <?php 
+            
+            	<div class="left"> 
+                    <b>Get Diablofy today. It's free!</b>
+                    <p>Create your account by choosing your username and password.</p> 
+                    <p>No need to download and install anything, its all here on diablofy.com. Works on all platforms.</p>                
+                    <img src="img/logobanner.png">
+           		</div>
+                 
+				<div class="right">
+                 <?php 
 
                     if(isset($_GET['loggedin'])){
                         if($_GET['loggedin'] == 'true'){
-                        	echo 'Thank you for logging in!';
+                        	echo '<img src="img/r1.png">Hi there ' . $_SESSION['username'] .'. Welcome to the magic world of diablofy!<br><br> How are you doing? My Name is Rasmus.';
                     	}else if ($_GET['loggedin'] == 'false'){
-                        	echo 'Something went wrong, did you mistype? NOT LOGGED IN';
+                        	echo '<h3>Something went wrong, did you mistype? Idiot...</h3>';
                     	}
-                    }
+                    } else {
+						echo '<a href="register.php"><img src="img/register.png"></a>';	
+					}
                  ?>
+                 </div>
           </div>
         
         </div>

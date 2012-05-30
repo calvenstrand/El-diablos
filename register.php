@@ -16,7 +16,7 @@ session_start();
 	  <?php
     include_once ('includes/header.php');
     ?>
-		<h2 style="text-align:center">Blablabla register whatup</h2>
+		<h2 style="text-align:center">Fill out this form to register</h2>
     <div class="main" role="main">
 			<div class="contact">
 				<form name="registerform" method="post" action="includes/userActions/register.php">

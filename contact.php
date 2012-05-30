@@ -17,24 +17,24 @@ session_start();
 		<?php
             include_once ('includes/header.php');
         ?>
-    	<h2 style="text-align:center">Feel free to contact us if you have any questions</h2>
+    	<h2 style="text-align:center">Contact us if you have any questions</h2>
 
         <div class="main" role="main">
             <div class="contact">
                 <form name="form" method="post" action="send_form_email.php">
                     <div class="cont">
                         <label for="name">Namn </label>
-                        <input type="text" name="name" id="name" required="required" />
+                        <input type="text" name="name" id="name" required />
                     </div>
                     
                     <div class="cont">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required="required" />
+                        <input type="email" name="email" id="email" required />
                     </div>
                 
                     <div class="cont">
                         <label for="meddelande">Ditt Meddelande</label>
-                        <textarea name="meddelande" required="required"></textarea>
+                        <textarea name="meddelande" required></textarea>
                     </div>
                 
                     <div class="submit">

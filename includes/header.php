@@ -14,7 +14,7 @@
 				?>
             <li id="login">
                 <a id="login-trigger" href="#">
-                	Log in<span>▼</span>
+                	Log in <span>▼</span>
                 </a>
                 <div id="login-content">
                     <form action="includes/login/login.php" method="post">
