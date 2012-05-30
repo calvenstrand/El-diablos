@@ -85,6 +85,40 @@ session_start();
 							<td>Sean Banan</td>
 						</tr>
 					</table>
+
+					<h2 style="text-align:center">Erics top5</h2>
+					<table border="5" style="text-align: center">
+						<tr>
+							<th>Rank</th>
+							<th>Song</th>
+							<th>Artist</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Jag blöder!</td>
+							<td>Eric E</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Dansa din djävul</td>
+							<td>Tomas Di leva</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Shake that ass bitch</td>
+							<td>?</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Boten Anna</td>
+							<td>Basshunter</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Paparazzi</td>
+							<td>Lady GaGa</td>
+						</tr>
+					</table>
         </div>
     
         <?php
